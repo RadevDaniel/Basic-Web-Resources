@@ -1,0 +1,343 @@
+.gridContainer {
+	margin-left: auto;
+	margin-right: auto;
+	width: 87.36%;
+	padding-left: 1.82%;
+	padding-right: 1.82%;
+}
+#LayoutDiv1 {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+
+/* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
+
+@media only screen and (min-width: 481px) {
+.gridContainer {
+	width: 90.675%;
+	padding-left: 1.1625%;
+	padding-right: 1.1625%;
+}
+#LayoutDiv1 {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+}
+
+/* Desktop Layout: 769px to a max of 1232px.  Inherits styles from: Mobile Layout and Tablet Layout. */
+
+@media only screen and (min-width: 769px) {
+.gridContainer {
+	width: 88.2%;
+	max-width: 1232px;
+	padding-left: 0.9%;
+	padding-right: 0.9%;
+	margin: auto;
+}
+#LayoutDiv1 {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+}
+
+/* =============================================================================
+  RESETS
+============================================================================= */
+html,
+body,
+div,
+h1,
+p,
+a,
+video {
+  margin: 0;
+  padding: 0;
+}
+
+/* =============================================================================
+  HTML, BODY
+============================================================================= */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-size: 16px;
+  font-family: "Oxygen", sans-serif;
+  line-height: 1.5;
+}
+
+/* =============================================================================
+  VIDEO
+============================================================================= */
+.video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index:0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+/* =============================================================================
+   NAVBAR
+   ========================================================================== */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	width:166px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 16px 18px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+	width:130px;
+}
+
+.dropdown-content a:hover {
+	background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+   
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 22px 18px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+ul.topnav li a:hover {
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	}
+
+ul.topnav li.icon {display: none;}
+
+.navigator{
+	z-index:1;
+	position:fixed;
+	margin-left:50px;
+	}
+
+@media screen and (max-width:680px) {
+  ul.topnav li:not(:first-child) {display: none;}
+  ul.topnav li.icon {
+    float: right;
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width:680px) {
+  ul.topnav.responsive {position: relative;}
+  ul.topnav.responsive li.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  ul.topnav.responsive li {
+    float: none;
+    display: inline;
+  }
+  ul.topnav.responsive li a {
+    display: block;
+    text-align: left;
+  }
+}
+
+.linerss{
+	z-index:0;
+	margin-top:60px;
+	position:fixed;
+	}
+.color{
+	color:#2e2e2e;
+	}
+
+/* =============================================================================
+  		 BODY
+   ========================================================================== */
+.content{
+	position: relative;
+	border: solid;
+	border-width: 1px;
+	width:100%;
+	height:900px;
+	}
+/* =============================================================================
+  		 HOME
+   ========================================================================== */
+.daka{
+	float:left;
+	width:355px;
+	margin-top:200px;
+	margin-left:55px;
+	}
+.name{
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:24pt;
+	text-align:center;
+	}	
+.position{
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:14pt;
+	text-align:center;
+	}
+.gliphs{
+	float:left;
+	}
+.face{
+	cursor:pointer;
+	margin-top:50px;
+	border-radius:100px;
+}
+.face:hover{
+	transition: 0.4s;
+	box-shadow: 0 16px 20px 0 rgba(0,0,0,0.40),0 17px 50px 0 rgba(0,0,0,0.40);
+	}
+
+.gliphy{
+	border-radius:100px;
+	margin-top:50px;
+	margin-left:18px;
+	cursor:pointer;
+	
+	}
+.gliphy:hover{
+	transition: 0.4s;
+	box-shadow: 0 16px 20px 0 rgba(0,0,0,0.40),0 17px 50px 0 rgba(0,0,0,0.40);
+	}
+/* =============================================================================
+  		BUSINESS
+   ========================================================================== */
+.info{
+	padding-top:100px;
+	float:left;
+	margin-right:55px;
+	height:400px;
+	}
+.infoRight{
+	padding-top:100px;
+	float:right;
+	margin-right:55px;
+	height:400px;
+	}
+.firstName{
+	margin-left:50px;
+	width:100%;
+	font-family:Suissnord;
+	font-size:24pt;
+	color:#2e2e2e;
+	}
+.lastName{
+	text-align:left;
+	margin-left:-1px;
+	margin-top:-10px;
+	width:100%;
+	font-size:18pt;
+	color:#2e2e2e;
+	font-family:"Poiret One";
+	}
+.picture{
+	width:355px;
+	margin-left:55px;
+	}
+.contentContainer{
+	width:1240px;
+	height:300px;
+	}
+.imagez{
+	float:right;
+	}
+.contentPerson{
+	margin-left:50px;
+	margin-top:90px;
+	width:860px;
+	height:210px;
+	border-right:solid;
+	border-bottom:solid;
+	border-width:1px;
+	float:left;
+	box-shadow: 0 15px 26px 0 rgba(0,0,0,0.40);
+	}
+.sug{
+	font-family:JosefinSans;
+	float:left;
+	margin-left:50px;
+	margin-top:70px;
+	width:350px;
+	height:300px;
+	border-left:solid;
+	border-bottom:solid;
+	border-width:1px;
+	box-shadow: 0 15px 26px 0 rgba(0,0,0,0.40);
+	}
+.sugBig{
+	font-family:"Roboto Bold", crisp;
+	font-size:14px;
+	float:left;
+	margin-left:50px;
+	margin-top:15px;
+	width:550px;
+	height:150px;
+	border-left:solid;
+	border-bottom:solid;
+	border-width:1px;
+	box-shadow: 0 15px 26px 0 rgba(0,0,0,0.40);
+	}
+.heading{
+	background-image:url(../../../Documents/Unnamed%20Site%202/trnshdn.png);
+	height:40px;
+	font-size:20pt;
+	font-family:"Roboto Bold", crisp;
+	
+	}
+.context{
+	margin-left:5px;
+	}
+#image1{
+	font-family:JosefinSans;
+	float:left;
+	margin-left:15px;
+	margin-top:70px;
+	width:700px;
+	height:300px;
+	border-left:solid;
+	border-bottom:solid;
+	border-width:1px;
+	box-shadow: 0 15px 26px 0 rgba(0,0,0,0.40);
+	}

@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>AccordionSample</title>
+<style type="text/css">
+.accordion {
+	margin: auto;
+	width: 1000%;
+}
+.accordion input {
+	display: none;
+}
+.Abox {
+	position: relative;
+	background: white;
+    height: 150px;
+    transition: all .15s ease-in-out;
+}
+.Abox::before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    box-shadow: 0 -1px 0 #e5e5e5,0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
+}
+header.Abox {
+	background: #00BCD4;
+	z-index: 100;
+	cursor: initial;
+	box-shadow: 0 -1px 0 #e5e5e5,0 0 2px -2px rgba(0,0,0,.12),0 2px 4px -4px rgba(0,0,0,.24);
+}
+header .Abox-title {
+	margin: 0;
+	font-weight: normal;
+	font-size: 30pt;
+	color: white;
+	cursor: initial;
+}
+.Abox-title {
+	font-size: 30pt;
+	width: calc(100% - 40px);
+	height: 150px;
+	line-height: 150px;
+	padding: 0 20px;
+	display: inline-block;
+	cursor: pointer;
+	-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;
+}
+.Abox-content {
+	width: calc(100% - 40px);
+	padding: 30px 20px;
+	font-size: 11pt;
+	color: rgba(0,0,0,.54);
+	display: none;
+}
+.Abox-close {
+	position: absolute;
+	height: 64px;
+	width: 100%;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	display: none;
+}
+input:checked + .Abox {
+	height: auto;
+	margin: 16px 0;
+    box-shadow: 0 0 6px rgba(0,0,0,.16),0 6px 12px rgba(0,0,0,.32);
+}
+input:checked + .Abox .Abox-title {
+	border-bottom: 1px solid rgba(0,0,0,.18);
+}
+input:checked + .Abox .Abox-content,
+input:checked + .Abox .Abox-close {
+	display: inline-block;
+}
+.arrows section .Abox-title {
+	padding-left: 44px;
+	width: calc(100% - 64px);
+}
+.arrows section .Abox-title:before {
+	position: absolute;
+	display: block;
+	content: '\203a';
+	font-size: 18pt;
+	left: 20px;
+	top: -2px;
+	transition: transform .15s ease-in-out;
+	color: rgba(0,0,0,.54);
+}
+input:checked + section.Abox .Abox-title:before {
+	transform: rotate(90deg);
+}
+
+
+</style>
+</head>
+
+<body>
+<nav class="accordion arrows">
+		<header class="Abox">
+			<label for="acc-close" class="Abox-title">Accordion menu</label>
+		</header>
+		<input type="radio" name="accordion" id="cb1" />
+		<section class="Abox">
+			<label class="Abox-title" for="cb1">Readme</label>
+			<label class="Abox-close" for="acc-close"></label>
+			<div class="Abox-content">Click on an item to open. Click on its header or the list header to close.</div>
+		</section>
+		<input type="radio" name="accordion" id="cb2" />
+		<section class="Abox">
+			<label class="Abox-title" for="cb2">Read me too</label>
+			<label class="Abox-close" for="acc-close"></label>
+			<div class="Abox-content">Add the class 'arrows' to nav.accordion to add dropdown arrows.</div>
+		</section>
+		<input type="radio" name="accordion" id="cb3" />
+		<section class="Abox">
+			<label class="Abox-title" for="cb3">Item 3</label>
+			<label class="Abox-close" for="acc-close"></label>
+			<div class="Abox-content">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque finibus tristique nisi, maximus ullamcorper ante finibus eget.</div>
+		</section>
+
+		<input type="radio" name="accordion" id="acc-close" />
+	</nav>
+</body>
+</html>

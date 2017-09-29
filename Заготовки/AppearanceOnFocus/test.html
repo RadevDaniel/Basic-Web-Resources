@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+body {
+  height: 2000px;
+}
+.bottomMenu {
+	margin-top:300px;
+  width: 100%;
+  height: 60px;
+  border-top: 1px solid #000;
+  background: red;
+  z-index: 1;
+  transition: all 1s;
+}
+.bottomMenu1 {
+	margin-top:300px;
+  width: 100%;
+  height: 60px;
+  border-top: 1px solid #000;
+  background: red;
+  z-index: 1;
+  transition: all 1s;
+}
+.hide {
+  opacity: 0;
+  left: -100%;
+}
+.show {
+  opacity: 1;
+  left: 0;
+}
+</style>
+</head>
+
+<body>
+
+<div id="myID" class="bottomMenu hide"></div>
+
+<div id="kur" class="bottomMenu1 hide"></div>
+
+
+<script type="text/javascript">
+
+myID = document.getElementById("myID");
+
+var myScrollFunc = function() {
+  var y = window.scrollY;
+  if (y >= 200) {
+    myID.className = "bottomMenu show"
+  } else {
+    myID.className = "bottomMenu hide"
+  }
+};
+
+
+window.addEventListener("scroll", myScrollFunc);
+
+kur = document.getElementById("kur");
+
+var myScrollFunc1 = function() {
+  var y = window.scrollY;
+  if (y >= 400) {
+    kur.className = "bottomMenu1 show"
+  } else {
+    kur.className = "bottomMenu1 hide"
+  }
+};
+
+
+window.addEventListener("scroll", myScrollFunc1);
+</script>
+
+</body>
+</html>

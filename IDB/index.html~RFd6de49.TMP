@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBDSoft</title>
+  <link href="css/boilerplate.css" rel="stylesheet" type="text/css">
+  <script src="scripts/respond.min.js"></script>
+  <script src="scripts/scripts.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oxygen:400,300,700">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Open+Sans+Condensed:300|Orbitron|Poiret+One|Quicksand|Rubik|Shrikhand" rel="stylesheet">
+</head>
+<body>
+
+
+<video id="my-video" class="video" muted loop>
+  <source src="media/demo.mp4" type="video/mp4">
+  <source src="media/demo.ogv" type="video/ogg">
+  <source src="media/demo.webm" type="video/webm">
+</video><!-- /video -->
+<!--/* =============================================================================
+  NAVIGATION
+============================================================================= */-->
+<div class="navigator">
+	<ul class="topnav" id="myTopnav">
+  		<li><a class="smoothScroll" href="#home"><strong class="color">Home</strong></a></li>
+        <li><a class="smoothScroll" href="#business"><strong class="color">Business</strong></a></li>
+		<li class="dropdown">
+    		<a class="dropbtn"><strong class="color">About</strong></a>
+    		<div class="dropdown-content">
+      			<a class="smoothScroll" href="#ivo"><strong class="color">Ivailo</strong></a>
+      			<a class="smoothScroll" href="#boris"><strong class="color">Boris</strong></a>
+      			<a class="smoothScroll" href="#daniel"><strong class="color">Daniel</strong></a>
+    		</div>
+		</li>
+  		<li><a class="smoothScroll" href="#products"><strong class="color">Products</strong></a></li>
+  		<li><a class="smoothScroll" href="#contact"><strong class="color">Contact</strong></a></li>
+  		<li class="icon">
+    		<a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
+  		</li>
+	</ul>
+</div>
+
+<div class="linerss"><img src="Images/Lines.png"></div>
+<!-- ==========================================================================
+		BODY
+=============================================================================*/-->
+<article class="content1" id="home">
+	<div class="daka" id="firstPage">
+    	<div class="image"><img src="Images/Dack.png"></div>
+        <div class="name"><span>DANIEL RADEV</span></div>
+        <div class="position"><span>Front-ender</span></div>
+        <div clas"gliphs">
+        	<img src="Images/facebook.png" class="face">
+            <img src="Images/Stack.png" class="gliphy">
+            <img src="Images/git.png" class="gliphy">
+        </div>
+    </div>
+    
+    <div class="daka" id="firstPage">
+    	<div class="image"><img src="Images/Bobi.png"></div>
+        <div class="name"><span>BORIS PETROV</span></div>
+        <div class="position"><span>Back-ender</span></div>
+        <div clas"gliphs">
+        	<img src="Images/facebook.png" class="face">
+            <img src="Images/Stack.png" class="gliphy">
+            <img src="Images/git.png" class="gliphy">
+        </div>
+    </div> 
+    
+     <div class="daka" id="firstPage">
+    	<div class="image"><img src="Images/Ivo.png"></div>
+        <div class="name"><span>IVAILO IVANOV</span></div>
+        <div class="position"><span>Back-ender</span></div>
+        <div clas"gliphs">
+        	<img src="Images/facebook.png" class="face">
+            <img src="Images/Stack.png" class="gliphy">
+            <img src="Images/git.png" class="gliphy">
+        </div>
+    </div>
+    
+</article>
+
+
+<article class="content" id="business">
+  <div class="info">
+    <div class="firstName"><span>BUSINESS</span></div>
+    	<div class="sug">
+        	<div class="heading">Brand Identity</div>
+            <div class="context"><span><strong>Lorem ipsum</strong> is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or remova.</span>
+         	</div>
+        </div>
+
+        	<div class="context" id="image1">
+            	<img src="Images/banner-img1-1435052382-1437471199.jpg" width="785" height="266">
+            </div>
+
+        <div class="sugBig">
+        	<div class="heading">back-end functionality</div>
+            <div class="context"><span><strong>Lorem ipsum</strong> is a pseudo-Latin text used in web design, typography, layout, and printing in place of English to emphasise design elements over content. It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or remova.</span>
+         	</div>
+        </div>
+  </div>
+    
+</article>
+
+
+<article class="content" id="ivo">
+	<div class="info">
+    	<div class="firstName"><p>IVAILO</p>
+        	<p class="lastName">IVANOV</p>
+        </div>
+        
+        <div class="contentContainer">
+        	<div class="contentPerson">
+            	<span class="inBox"><strong class="zaglavie">In a professional</strong> context it often happens
+                 that private or corporate clients
+                 corder a publication to be made and
+                   presented with the actual content
+                    still not being ready. </span>
+            </div>
+            
+            <div class="contentPerson">
+            	<span class="inBox"><strong class="zaglavie">In a professional</strong> context it often happens
+                 that private or corporate clients
+                 corder a publication to be made and
+                   presented with the actual content
+                    still not being ready. </span>
+            </div>
+            
+            <div class="contentPersonBig">
+            	<span class="inBox"><strong class="zaglavie">In a professional</strong> context it often happens
+                 that private or corporate clients
+                 corder a publication to be made and
+                   presented with the actual content
+                    still not being ready.It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or remova..It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. </span>
+            </div>
+            
+            
+        </div>
+            <div class="contentPersonPic">
+            	
+            </div>
+           
+ 	</div>
+    
+
+</article>
+
+
+<article class="content" id="boris">
+	<div class="infoRight">
+    	<div class="firstName"><p>BORIS</p>
+        	<p class="lastName">PETROV</p>
+        </div> 
+        
+         <div class="contentPersonPicLeft">
+            	
+         </div>
+         
+         <div class="contentPerson">
+            	<span class="inBox"><strong class="zaglavie">In a professional</strong> context it often happens
+                 that private or corporate clients
+                 corder a publication to be made and
+                   presented with the actual content
+                    still not being ready. </span>
+            </div>
+            
+            <div class="contentPerson">
+            	<span class="inBox"><strong class="zaglavie">In a professional</strong> context it often happens
+                 that private or corporate clients
+                 corder a publication to be made and
+                   presented with the actual content
+                    still not being ready. </span>
+            </div>
+            
+            <div class="contentPersonBig">
+            	<span class="inBox"><strong class="zaglavie">In a professional</strong> context it often happens
+                 that private or corporate clients
+                 corder a publication to be made and
+                   presented with the actual content
+                    still not being ready.It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or remova..It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. </span>
+            </div>
+              	
+    </div>
+
+</article>
+	
+
+<article class="content" id="daniel">
+	<div class="info">
+    	<div class="firstName"><p>DANIEL</p>
+        	<p class="lastName">RADEV</p>
+        </div>
+        
+        <div class="contentContainer">
+        	<div class="contentPerson">
+            	<span class="inBox"><strong class="zaglavie">In a professional</strong> context it often happens
+                 that private or corporate clients
+                 corder a publication to be made and
+                   presented with the actual content
+                    still not being ready. </span>
+            </div>
+            
+            <div class="contentPerson">
+            	<span class="inBox"><strong class="zaglavie">In a professional</strong> context it often happens
+                 that private or corporate clients
+                 corder a publication to be made and
+                   presented with the actual content
+                    still not being ready. </span>
+            </div>
+            
+            <div class="contentPersonBig">
+            	<span class="inBox"><strong class="zaglavie">In a professional</strong> context it often happens
+                 that private or corporate clients
+                 corder a publication to be made and
+                   presented with the actual content
+                    still not being ready.It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. Its words and letters have been changed by addition or remova..It's also called placeholder (or filler) text. It's a convenient tool for mock-ups. It helps to outline the visual elements of a document or presentation, eg typography, font, or layout. Lorem ipsum is mostly a part of a Latin text by the classical author and philosopher Cicero. </span>
+            </div>
+            
+            
+        </div>
+            <div class="contentPersonPic">
+            	
+            </div>
+           
+ 	</div>  
+</article>
+
+
+<article class="content" id="products">
+
+	<div class="info">
+		<div class="ourProducts">OUR PRODUCTS</div>
+        
+         <div class="prod">
+         	<div class="top"></div>
+            <div class="bottom"></div>
+         </div>
+         <div class="prod">
+         	<div class="top"></div>
+            <div class="bottom"></div>
+         </div>
+         <div class="prod">
+         	<div class="top"></div>
+            <div class="bottom"></div>
+         </div>
+    </div>
+    
+</article>
+
+
+<article class="content" id="contact">
+	<div class="textsKontakt">
+		<span class="textKontaktLeft"><b>CONTACT US</b></span>
+		<br>
+        <br>
+        <br>
+        <br>
+	  <span class="textKontaktInfo"><img src="ресурси/Kontakt/fa-location-arrow.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Нептун 8, Ет. 3, ЗПЗ</span>
+      <br>
+      <br>
+      <span class="textKontaktInfo">&nbsp;<img src="ресурси/Kontakt/fa-mobile-phone.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+359 123 456 789</span>
+      <br>
+      <br>
+      <span class="textKontaktInfo"><img src="ресурси/Kontakt/fa-envelope-o.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d.radevs@abv.bg</span>
+      <br>
+    <br>
+      <span class="textKontaktInfo"><img src="ресурси/Kontakt/fa-link.png">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;www.danielradev.com</span>
+  </div>
+  <div class="zapitvane"> 
+ <span class="textKontaktLeft"><b>SEND REQUEST</b></span>
+ <br>
+ <br>
+ <br>
+ <br>
+<input name="name" type="text" class="form" value="Име...">
+<span id="sprytextfield1">
+<input name="name2" type="text" class="form2" value="Email...">
+<br>
+<textarea class="form3">Massage...</textarea><br>
+<button class="buttonTwo">SEND
+    </button>
+  </div>
+</article>
+
+<script>
+/******************************************************
+		RESPONSEBAR
+*******************************************************/
+
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+/******************************************************
+		APPEARENCE
+*******************************************************/
+
+firstPage = document.getElementById("firstPage");
+var myScrollFunc = function() {
+  var y = window.scrollY;
+  if (y >= 200) {
+    firstPage.className = "daka show"
+ }
+};
+/******************************************************
+		SCROLLING
+*******************************************************/
+
+
+$(function() {
+  $('.smoothScroll').click(function() {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000); // The number here represents the speed of the scroll in milliseconds
+        return false;
+      }
+    }
+ });
+});
+
+(function() {
+  var video = document.getElementById("my-video");
+  
+  video.addEventListener( "canplay", function() {
+    video.play();
+  });
+})();
+</script>
+
+</body>
+</html>

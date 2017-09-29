@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script type="text/javascript">
+
+var slideimages = new Array() // create new array to preload images
+slideimages[0] = new Image() // create new instance of image object
+slideimages[0].src = "1.jpg" // set image object src property to an image's src, preloading that image in the process
+slideimages[1] = new Image()
+slideimages[1].src = "2.jpg"
+slideimages[2] = new Image()
+slideimages[2].src = "3.jpg"
+
+</script>
+<style>
+#drehi{
+	width: 157px;
+	height: 90px;
+	alignment-adjust:central;
+	border: 0px;
+	margin-left: 50px;
+	overflow: hidden;
+	position: absolute;
+	visibility: visible;	
+	}
+</style>
+<style>
+.garderob{
+    padding-left:0px;
+	width: 300px;
+	height: 90px;
+	background-image:url(file:shkaf.png)
+	}
+.vratadqsno{
+	cursor:pointer;
+	width: 301px;
+	height: 90px;
+	float: right;
+	position: absolute;
+	left: 8px;
+	top: 8px;
+	visibility: inherit;
+	}
+.indoorright{
+	width: 300px;
+	height: 90px;
+	float: left;
+	}
+</style>
+<script src="SpryAssets/SpryEffects.js" type="text/javascript"></script>
+<script type="text/javascript">
+function MM_effectSlide(targetElement, horizontal, from, to, toggle)
+{
+	Spry.Effect.DoSlide(targetElement, {horizontal: true, from: from, to: to, toggle: toggle});
+}
+
+</script>
+</head>
+<body>
+
+
+<div class="garderob">
+
+<div class="indoorright" dir="ltr"><fieldset id="drehi" >
+  <embed src="file:slideshow.html" width="157" height="120"></embed>
+</fieldset>
+  
+<div class="vratadqsno" onClick="MM_effectSlide(this, 1000, '100%', '5%', true)"><img src="file:7 vrata 2.png" width="300" height="90"></div>
+</div>
+
+
+  
+  
+  
+</div>
+ 
+</body>
+</html>

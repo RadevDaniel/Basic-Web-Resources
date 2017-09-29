@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBDSoft</title>
+  <link href="css/boilerplate.css" rel="stylesheet" type="text/css">
+  <script src="scripts/respond.min.js"></script>
+  <script src="scripts/scripts.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oxygen:400,300,700">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+
+<video id="my-video" class="video" muted loop>
+  <source src="media/demo.mp4" type="video/mp4">
+</video><!-- /video -->
+<!--/* =============================================================================
+  NAVIGATION
+============================================================================= */-->
+<div class="navigator">
+	<ul class="topnav" id="myTopnav">
+  		<li><a class="smoothScroll" href="#home">Home</a></li>
+        <li><a class="smoothScroll" href="#business">Business</a></li>
+		<li class="dropdown">
+    		<a class="dropbtn">About</a>
+    		<div class="dropdown-content">
+      			<a class="smoothScroll" href="#ivo">Ivo</a>
+      			<a class="smoothScroll" href="#boris">Boris</a>
+      			<a class="smoothScroll" href="#daniel">Daniel</a>
+    		</div>
+		</li>
+  		<li><a class="smoothScroll" href="#products">Products</a></li>
+  		<li><a class="smoothScroll" href="#contact">Contact</a></li>
+  		<li class="icon">
+    		<a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
+  		</li>
+	</ul>
+</div>
+
+<!-- ==========================================================================
+		BODY
+=============================================================================*/-->
+<article class="content" id="home">
+
+</article>
+
+
+<article class="content" id="business">
+
+</article>
+
+
+<article class="content" id="ivo">
+
+</article>
+
+
+<article class="content" id="boris">
+
+</article>
+
+
+<article class="content" id="daniel">
+
+</article>
+
+
+<article class="content" id="products">
+
+</article>
+
+
+<article class="content" id="contact">
+
+</article>
+
+<script>
+/******************************************************
+		SCROLLING
+*******************************************************/
+
+$(function() {
+  // This will select everything with the class smoothScroll
+  // This should prevent problems with carousel, scrollspy, etc...
+  $('.smoothScroll').click(function() {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 1000); // The number here represents the speed of the scroll in milliseconds
+        return false;
+      }
+    }
+ });
+});
+
+(function() {
+  var video = document.getElementById("my-video");
+  
+  video.addEventListener( "canplay", function() {
+    video.play();
+  });
+})();
+</script>
+
+</body>
+</html>

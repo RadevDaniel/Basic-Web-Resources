@@ -1,0 +1,3511 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+<title>dakata</title>
+ 
+<style>
+#wrapper {
+    width: 600px;
+    position: relative;
+    left: 0px;
+	transition: left .5s ease-in-out;
+}
+.content {
+    float: left;
+    width: 150px;
+    height: 60px;
+    white-space: normal;
+    background-repeat: no-repeat;
+}
+#itemOne {
+   
+}
+#itemTwo {
+   
+}
+#itemThree {
+   
+}
+#itemFour {
+    
+}
+#contentContainer {
+    width: 150px;
+    height: 60px;
+    overflow: hidden;
+}
+#navLinks {
+    text-align: center;
+    width: 150px;
+}
+    #navLinks ul {
+        margin: 0px;
+        padding: 0px;
+        display: inline-block;
+        margin-top: px;
+    }
+        #navLinks ul li {
+            float: left;
+            text-align: center;
+            margin: 2px;
+            list-style: none;
+            cursor: pointer;
+            background-color: #CCCCCC;
+            padding: 2px;
+            border-radius: 50%;
+            border: black 5px solid;
+        }
+            #navLinks ul li:hover {
+                background-color: #FFFF00;
+            }
+            #navLinks ul li.active {
+                background-color: #333333;
+                color: #FFFFFF;
+                outline-width: 2px;
+            }
+                #navLinks ul li.active:hover {
+                    background-color: #484848;
+                    color: #FFFFFF;
+                }
+ 
+</style>
+<script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+</script>
+</head>
+ 
+<body onLoad="MM_preloadImages('11.png','22.png','33.png','44.png')">
+<div id="contentContainer">
+    <div id="wrapper">
+        <div id="itemOne" class="content">
+     <a href="../../produkt1.html" target="new" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image1','','11.png',1)"><img src="1.png" width="150" height="60" id="Image1"></a>
+        </div>
+        <div id="itemTwo" class="content">
+     <a href="../../produkt2.html" target="new" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image2','','22.png',1)"><img src="2.png" width="150" height="60" id="Image2"></a>
+      </div>
+        <div id="itemThree" class="content"><a href="../../produkt3.html" target="new" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','33.png',1)"><img src="3.png" width="150" height="60" id="Image3"></a>
+     
+        </div>
+        <div id="itemFour" class="content">
+     <a href="../../produkt4.html" target="new" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image4','','44.png',1)"><img src="4.png" width="150" height="60" id="Image4"></a>
+        </div>
+    </div>
+</div>
+
+
+
+ 
+<div id="navLinks">
+    <ul>
+        <li class="itemLinks" data-pos="0px"></li>
+        <li class="itemLinks" data-pos="-150px"></li>
+        <li class="itemLinks" data-pos="-300px"></li>
+        <li class="itemLinks" data-pos="-450px"></li>
+    </ul>
+</div>
+ 
+ 
+<script>
+var links = document.querySelectorAll(".itemLinks");
+var wrapper = document.querySelector("#wrapper");
+
+var activeLink = 0;
+
+for (var i = 0; i < links.length; i++) {
+    var link = links[i];
+    link.addEventListener('click', setClickedItem, false);
+    link.itemID = i;
+}
+
+links[activeLink].classList.add("active");
+ 
+function setClickedItem(e) {
+    removeActiveLinks();
+ 
+    var clickedLink = e.target;
+    activeLink = clickedLink.itemID;
+ 
+    changePosition(clickedLink);
+}
+ 
+function removeActiveLinks() {
+    for (var i = 0; i < links.length; i++) {
+        links[i].classList.remove("active");
+    }
+}
+function changePosition(link) {
+    link.classList.add("active");
+ 
+    var position = link.getAttribute("data-pos");
+    wrapper.style.left = position;
+} 
+var timeoutID;
+ 
+function startTimer() {
+    // wait 2 seconds before calling goInactive
+    timeoutID = window.setInterval(goToNextItem, 3000);
+}
+startTimer();
+ 
+function resetTimer() {
+    window.clearInterval(timeoutID);
+    startTimer();
+}
+ 
+function goToNextItem() {
+    removeActiveLinks();
+ 
+    if (activeLink < links.length - 1) {
+        activeLink++;
+    } else {
+        activeLink = 0;
+    }
+ 
+    var newLink = links[activeLink];
+    changePosition(newLink);
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- АВТОРИ...................
+ 
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Автор/Връзка</title>
+<style type="text/css">
+
+
+
+.container {
+	width: 1264px;
+	background-color: #FFFFFF;
+	
+}
+
+
+.header {
+	background-color: #898989;
+	height:176px;
+}
+.nav{
+	width: 100%;
+	height: 40px;
+	background-color: #1488c0;
+	}
+#button{
+	width: 130px;
+	height: 40px;
+	float: left;
+		}
+.margin {
+	margin-left: 242px;
+	
+	}
+.MenuBarItemSubmenu{
+	height:40px;
+	width:130px;
+	background-color:#128ec2;
+	}
+.MenuBarHorizontal{
+	background-color:#128ec2;
+	height:40px;
+	}
+
+
+.sidebar1 {
+	float: left;
+	width: 242px;
+	height:1500px;
+	background-color:#666;
+}
+.content {
+
+	width: 780px;
+	height:1500px;
+	float: left;
+	background-color:#666;
+}
+.sidebar2 {
+	float: left;
+	width: 242px;
+	height:1500px;
+	background-color: #666;
+}
+
+.footer {
+	background-color: #000;
+	height: 181px;
+	width: 1264px;
+	float: left;
+	background-image: url(resursi/fuuter/fuuter.jpg);
+}
+.goren{
+	padding-top:25px;
+	width:1010px;
+	height:98px;
+	padding-left:242px
+	}
+.dolen{
+	width: 1264px;
+	height: 64px;
+	padding-top: 20px;
+	color: #CCC;
+	}
+#sudurjanie{
+	width:256px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie1{
+	width:263px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie2{
+	width:262px;
+	height:117px;
+	float:left;
+	}
+#linkove{
+	height: 17px;
+	width: 110px;
+	margin-left: 100px;
+	color: #CCC;	
+	}
+
+.obekti{
+width:1010px;
+height:100px;
+padding-left:242px;
+	}
+.animation{
+	width:90px;
+	height:90px;
+	float:left;
+	}
+.companyname{
+	height:90px;
+	float:left;
+	width:345px;
+	margin-left:20px
+	}
+.shkafche{
+	width:345px;
+	height:90px;
+	float:left;
+	margin-left:17px;
+	}
+.lenta{
+	width:1264px;
+	height:30px;
+	background-color:#1488c0;
+	padding-top:6px;
+	}
+#textjoin{
+	height:17px;
+	width:110px;
+	margin-left:242px;
+	margin-top:4px;
+	float:left;
+	}
+#vruzki{
+	float:left;
+	width:25px;
+	height:25px;
+	margin-left:7px;
+	}
+#log{
+	height:17px;
+	width:123px;
+	float:right;
+	margin-right:242px;
+	margin-top:4px;
+	}
+</style>
+<style type="text/css">
+body {
+	background-color: #898989;
+}
+a:link {
+	color: #999999;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #CCCCCC;
+}
+a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+a:active {
+	text-decoration: none;
+}
+.Avtor{
+	float:left;
+	width:780px;
+	height:350px;
+	margin-top:10px;
+	}
+.obratna{
+	margin-top:10px;
+	width:780px;
+	height:350px;
+	float:left;
+	background-image:url(resursi/tqlo/avtor%20kontakti/obratna%20vryzka.jpg)
+	}
+#karta{
+	width:370px;
+	height:322px;
+	float:left;
+	background-color:#0F6;
+	margin-top:28px;
+	}
+.vryzka{
+	width:390px;
+	height:322px;
+	float:left;
+	margin-top:28px;
+	margin-left:20px;
+	}
+#Name{
+	width:250px;
+	height:40px;
+	margin-top:10px;
+	}
+#Ime{
+	width:250px;
+	height:20px;
+	}
+#Email{
+	width:250px;
+	height:40px;
+	margin-top:10px;
+	}
+#imeil{
+	width:250px;
+	height:20px;
+	}
+#Kletka{
+	margin-top:20px;
+	width:350px;
+	height:150px;
+	}
+#pole{
+	margin-top:20px;
+	width:350px;
+	height:150px;
+	}
+#butonche{
+	margin-right:35px;
+	margin-top:10px;
+	}
+.proekti{
+	width:780px;
+	height:500px;
+	background-color:#0F9;
+	float:left;
+	margin-top:10px;
+	background-image:url(resursi/tqlo/avtor%20kontakti/%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%B8%D1%80%D0%B0%D0%BD%D0%B8.jpg)
+	}
+#project{
+	width:180px;
+	height:180px;
+	background-color:#CCC;
+	margin:5px;
+	float:left;
+	}
+.prodproj{
+	margin-top:70px;
+	margin-left:9px;
+	}
+
+
+
+
+</style>
+<link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css" />
+<script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<script src="SpryAssets/SpryValidationTextField.js" type="text/javascript"></script>
+<script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+</script>
+</head>
+
+<body onload="MM_preloadImages('resursi/Navigaciq/Vhodizhod/join/faceroled.jpg','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg','resursi/Navigaciq/butoni/galeriqroled.jpg')">
+<div class="container">
+  <div class="header">
+ <div class="lenta">
+  <div id="textjoin">Присъедини се:</div>
+  <div id="vruzki"><a href="http://www.facebook.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image8','','resursi/Navigaciq/Vhodizhod/join/faceroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/face.jpg" width="25" height="25" id="Image8" /></a></div>
+   <div id="vruzki"><a href="http://www.vk.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/vk.jpg" width="25" height="25" id="Image9" /></a></div>
+  <div id="vruzki"><a href="http://www.blogger.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/bbb.jpg" width="25" height="25" id="Image10" /></a></div>
+  <div id="vruzki"><a href="http://www.reddit.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/choveche.jpg" width="25" height="25" id="Image11" /></a></div>
+  <div id="vruzki"><a href="http://www.twitter.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/twitter.jpg" width="25" height="25" id="Image12" /></a></div>
+  <div id="log">Вход/Регистрация</div>
+</div>
+  <div class="obekti">
+      <div class="animation">
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="90" height="90" id="FlashID" title="logo">
+          <param name="movie" value="resursi/logorose/ROSE.swf" />
+          <param name="quality" value="high" />
+          <param name="wmode" value="opaque" />
+          <param name="swfversion" value="6.0.65.0" />
+          <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. 
+          <param name="expressinstall" value="Scripts/expressInstall.swf" />
+          <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+          <!--[if !IE]>--
+          <object type="application/x-shockwave-flash" data="resursi/logorose/ROSE.swf" width="90" height="90">
+            <!--<![endif]--
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. 
+            <div>
+              <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+              <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+            </div>
+            <!--[if !IE]>-
+          </object>
+          <!--<![endif]-
+        </object>
+      </div>
+      <div class="companyname"><img src="resursi/logorose/style.png" width="345" height="90" /></div>
+      <div class="shkafche">
+      <embed class="ddd" src="file:resursi/shkaf/webshkaf.html" width="360" height="120"></embed>
+      </div>
+  </div> 
+    <div class="nav">
+       <div class="margin">
+          <div id="button"><a href="index.html" onmouseout="MM_swapImgRestore()" 
+               onmouseover="MM_swapImage('Image1','','resursi/navigaciq/butoni/nachaloroled.jpg',1)">
+               <img src="resursi/navigaciq/butoni/nachalo.jpg" width="130" height="40" id="Image1" /></a>
+          </div>
+          <div id="button"><a href="Zanas.html" onmouseout="MM_swapImgRestore()" 
+                onmouseover="MM_swapImage('Image2','','resursi/navigaciq/butoni/za nasroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/za nas.jpg" width="130" height="40" id="Image2" /></a>
+          </div>
+          <div id="button">
+            <ul id="MenuBar1" class="MenuBarHorizontal">
+              <li><a class="MenuBarItemSubmenu" href="#">Каталог</a>
+                <ul>
+                  <li><a href="Parfumi.html">Парфюми</a></li>
+                  <li><a href="Kozmetika.html">Козметика</a></li>
+                </ul>
+              </li>
+</ul>
+          </div>
+         <div id="button"><a href="Galeria.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/butoni/galeriqroled.jpg',1)"><img src="resursi/Navigaciq/butoni/galeriq.jpg" width="130" height="40" id="Image3" /></a></div>
+         <div id="button"><a href="Promo.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image5','','resursi/navigaciq/butoni/promoroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/promo.jpg" width="130" height="40" id="Image5" /></a>
+         </div>
+         <div id="button"><a href="Poruchai.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image6','','resursi/navigaciq/butoni/porychairoled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/porychai.jpg" width="130" height="40" id="Image6" /></a>
+         </div>
+      </div> 
+    </div>
+   
+   
+   
+  </div>
+  <div class="sidebar1"></div>
+  <div class="content">
+    <div class="Avtor">
+      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="780" height="350" id="FlashID2" title="Автор/Контакти">
+        <param name="movie" value="resursi/tqlo/avtor kontakti/автор контакти.swf" />
+        <param name="quality" value="high" />
+        <param name="wmode" value="opaque" />
+        <param name="swfversion" value="6.0.65.0" />
+       
+        <param name="expressinstall" value="Scripts/expressInstall.swf" />
+        <object type="application/x-shockwave-flash" data="resursi/tqlo/avtor kontakti/автор контакти.swf" width="780" height="350">
+          <!--<![endif]
+          <param name="quality" value="high" />
+          <param name="wmode" value="opaque" />
+          <param name="swfversion" value="6.0.65.0" />
+          <param name="expressinstall" value="Scripts/expressInstall.swf" />
+          <div>
+            <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+            <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+          </div>
+         
+        </object>
+       
+      </object>
+    </div>
+
+<div class="obratna">
+  <div id="karta"></div>
+  <div class="vryzka">
+  
+   <div id="Name">
+       <div id="tekst">Име</div>
+     <form id="form1" name="form1" method="post" action="">
+       <span id="sprytextfield1">
+       <input name="Ime" type="text" id="Ime" maxlength="15" />
+       <span class="textfieldRequiredMsg">Задължително поле.</span><span class="textfieldMinCharsMsg">Минимален брой символи 6.</span><span class="textfieldMaxCharsMsg">Максимален брой символи 15.</span></span>
+     </form>
+   </div>
+   <div id="Email">
+     <form id="form2" name="form2" method="post" action="">
+       <span id="sprytextfield2">
+       <label for="imeil">Имейл</label>
+       <input type="text" name="imeil" id="imeil" />
+       <span class="textfieldRequiredMsg">Задължително поле.</span><span class="textfieldInvalidFormatMsg">Невалиден имейл.</span></span>
+     </form>
+   </div>
+   <div id="kletka"><textarea name="Pole" id="pole" cols="1" rows="1" lang="bg">Обратна връзка</textarea></div>
+    <div id="butonche" align="right"><input name="Изпрати" type="button" value="Изпрати" /></div>
+  </div>
+
+</div>     
+   <div class="proekti">
+  <div class="prodproj">
+    <div id="project"><img src="resursi/tqlo/avtor kontakti/1.png" width="170" height="170" /></div>
+    <div id="project"><img src="resursi/tqlo/avtor kontakti/2.jpg" width="170" height="170" /></div>
+    <div id="project"><img src="resursi/tqlo/avtor kontakti/3.png" width="180" height="128" /></div>
+    <div id="project"><img src="resursi/tqlo/avtor kontakti/4.jpg" width="180" height="180" /></div>
+    <div id="project"><img src="resursi/tqlo/avtor kontakti/5.jpg" width="180" height="180" /></div>
+    <div id="project"><img src="resursi/tqlo/avtor kontakti/6.jpg" width="180" height="180" /></div>
+    <div id="project"><img src="resursi/tqlo/avtor kontakti/7.jpg" width="180" height="180" /></div>
+    <div id="project"><img src="resursi/tqlo/avtor kontakti/8.jpg" width="185" height="180" /></div>
+  </div>
+   </div>
+  </div>
+  <div class="sidebar2"></div>
+  <div class="footer">
+    <div class="goren">
+       <div id="sudurjanie">
+        <div  id="linkove"><a href="index.html">Начало</a></div>
+        <div  id="linkove"><a href="Zanas.html">За нас</a></div>
+        <div  id="linkove"><a href="Galeria.html">Галерия</a></div>
+        <div  id="linkove"><a href="Parfumi.html">Парфюми</a></div>
+       </div>
+       <div id="sudurjanie1">
+        <div  id="linkove"><a href="Promo.html">Промоции</a></div>
+        <div  id="linkove"><a href="Poruchai.html">Поръчай</a></div>
+        <div  id="linkove"><a href="Avtor.html">Автор</a></div>
+        <div  id="linkove"><a href="Kozmetika.html">Козметика</a></div>
+       </div>
+       <div id="sudurjanie2">
+        <div  id="linkove"><a href="Produkt2.html">Продукт2</a></div>
+        <div  id="linkove"><a href="Produkt3.html">Продукт3</a></div>
+        <div  id="linkove"><a href="Produkt4.html">Продукт4</a></div>
+        <div  id="linkove"><a href="Produkt5.html">Продукт5</a></div>
+       </div>
+    </div>
+    <div class="dolen">
+      <div align="center">&copy;Всички права запазени! Изготвил: Даниел Радев</div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+swfobject.registerObject("FlashID");
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+swfobject.registerObject("FlashID2");
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "none", {minChars:6, maxChars:15, validateOn:["blur", "change"]});
+var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "email", {validateOn:["blur", "change"]});
+</script>
+</body>
+</html>
+
+ 
+ 
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ <--ГАЛЕРИЯ
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Галерия</title>
+<style type="text/css">
+
+
+
+.container {
+	width: 1264px;
+	background-color: #FFFFFF;
+	
+}
+
+
+.header {
+	background-color: #898989;
+	height:176px;
+}
+.nav{
+	width: 100%;
+	height: 40px;
+	background-color: #1488c0;
+	}
+#button{
+	width: 130px;
+	height: 40px;
+	float: left;
+		}
+.margin {
+	margin-left: 242px;
+	
+	}
+.MenuBarItemSubmenu{
+	height:40px;
+	width:130px;
+	background-color:#128ec2;
+	}
+.MenuBarHorizontal{
+	background-color:#128ec2;
+	height:40px;
+	}
+
+
+.sidebar1 {
+	float: left;
+	width: 242px;
+	height:1100px;
+	background-color:#666;
+}
+.content {
+
+	width: 780px;
+	height:1100px;
+	float: left;
+	background-color:#666;
+}
+.sidebar2 {
+	float: left;
+	width: 242px;
+	height:1100px;
+	background-color: #666;
+}
+
+.footer {
+	background-color: #000;
+	height: 181px;
+	width: 1264px;
+	float: left;
+	background-image: url(resursi/fuuter/fuuter.jpg);
+}
+.goren{
+	padding-top:25px;
+	width:1010px;
+	height:98px;
+	padding-left:242px
+	}
+.dolen{
+	width: 1264px;
+	height: 64px;
+	padding-top: 20px;
+	color: #CCC;
+	}
+#sudurjanie{
+	width:256px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie1{
+	width:263px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie2{
+	width:262px;
+	height:117px;
+	float:left;
+	}
+#linkove{
+	height: 17px;
+	width: 110px;
+	margin-left: 100px;
+	color: #CCC;	
+	}
+
+.obekti{
+width:1010px;
+height:100px;
+padding-left:242px;
+	}
+.animation{
+	width:90px;
+	height:90px;
+	float:left;
+	}
+.companyname{
+	height:90px;
+	float:left;
+	width:345px;
+	margin-left:20px
+	}
+.shkafche{
+	width:345px;
+	height:90px;
+	float:left;
+	margin-left:17px;
+	}
+.lenta{
+	width:1264px;
+	height:30px;
+	background-color:#1488c0;
+	padding-top:6px;
+	}
+#textjoin{
+	height:17px;
+	width:110px;
+	margin-left:242px;
+	margin-top:4px;
+	float:left;
+	}
+#vruzki{
+	float:left;
+	width:25px;
+	height:25px;
+	margin-left:7px;
+	}
+#log{
+	height:17px;
+	width:123px;
+	float:right;
+	margin-right:242px;
+	margin-top:4px;
+	}
+</style>
+<style type="text/css">
+body {
+	background-color: #898989;
+}
+a:link {
+	color: #999999;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #CCCCCC;
+}
+a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+a:active {
+	text-decoration: none;
+}
+.sudurjanie{
+	width:780px;
+	height:250px;
+	background-color:#333;
+	
+}
+#kartinka{
+	width:250px;
+	height:250px;
+	background-color:#333;
+	float:right;
+	cursor:pointer;
+}
+#tekst{
+	padding-top: 60px;
+	width: 490px;
+	height: 190px;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #CCC;
+	}
+#kartinka1{
+	width:250px;
+	height:250px;
+	background-color:#333;
+	float:left;
+	cursor:pointer;
+}
+#tekst1{
+	background-color:#999;
+	padding-top:60px;
+	float:right;
+	width:490px;
+	height:190px;
+	padding-left: 20px;
+	padding-right: 20px;
+	color:#FFF;
+	}
+</style>
+<link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<script src="SpryAssets/SpryEffects.js" type="text/javascript"></script>
+<script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+function MM_effectGrowShrink(targetElement, duration, from, to, toggle, referHeight, growFromCenter)
+{
+	Spry.Effect.DoGrow(targetElement, {duration: duration, from: from, to: to, toggle: toggle, referHeight: referHeight, growCenter: growFromCenter});
+}
+</script>
+</head>
+
+<body onload="MM_preloadImages('resursi/Navigaciq/Vhodizhod/join/faceroled.jpg','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg','resursi/Navigaciq/butoni/galeriqroled.jpg')">
+<div class="container">
+  <div class="header">
+ <div class="lenta">
+  <div id="textjoin">Присъедини се:</div>
+  <div id="vruzki"><a href="http://www.facebook.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image8','','resursi/Navigaciq/Vhodizhod/join/faceroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/face.jpg" width="25" height="25" id="Image8" /></a></div>
+   <div id="vruzki"><a href="http://www.vk.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/vk.jpg" width="25" height="25" id="Image9" /></a></div>
+  <div id="vruzki"><a href="http://www.blogger.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/bbb.jpg" width="25" height="25" id="Image10" /></a></div>
+  <div id="vruzki"><a href="http://www.reddit.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/choveche.jpg" width="25" height="25" id="Image11" /></a></div>
+  <div id="vruzki"><a href="http://www.twitter.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/twitter.jpg" width="25" height="25" id="Image12" /></a></div>
+  <div id="log">Вход/Регистрация</div>
+</div>
+  <div class="obekti">
+      <div class="animation">
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="90" height="90" id="FlashID" title="logo">
+          <param name="movie" value="resursi/logorose/ROSE.swf" />
+          <param name="quality" value="high" />
+          <param name="wmode" value="opaque" />
+          <param name="swfversion" value="6.0.65.0" />
+          <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. --
+          <param name="expressinstall" value="Scripts/expressInstall.swf" />
+          <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+          <!--[if !IE]>--
+          <object type="application/x-shockwave-flash" data="resursi/logorose/ROSE.swf" width="90" height="90">
+            <!--<![endif]--
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. 
+            <div>
+              <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+              <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+            </div>
+           
+          </object>
+          
+        </object>
+      </div>
+      <div class="companyname"><img src="resursi/logorose/style.png" width="345" height="90" /></div>
+      <div class="shkafche">
+      <embed class="ddd" src="file:resursi/shkaf/webshkaf.html" width="360" height="120"></embed>
+      </div>
+  </div> 
+    <div class="nav">
+       <div class="margin">
+          <div id="button"><a href="index.html" onmouseout="MM_swapImgRestore()" 
+               onmouseover="MM_swapImage('Image1','','resursi/navigaciq/butoni/nachaloroled.jpg',1)">
+               <img src="resursi/navigaciq/butoni/nachalo.jpg" width="130" height="40" id="Image1" /></a>
+          </div>
+          <div id="button"><a href="Zanas.html" onmouseout="MM_swapImgRestore()" 
+                onmouseover="MM_swapImage('Image2','','resursi/navigaciq/butoni/za nasroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/za nas.jpg" width="130" height="40" id="Image2" /></a>
+          </div>
+          <div id="button">
+            <ul id="MenuBar1" class="MenuBarHorizontal">
+              <li><a class="MenuBarItemSubmenu" href="#">Каталог</a>
+                <ul>
+                  <li><a href="Parfumi.html">Парфюми</a></li>
+                  <li><a href="Kozmetika.html">Козметика</a></li>
+                </ul>
+              </li>
+</ul>
+          </div>
+         <div id="button"><a href="Galeria.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/butoni/galeriqroled.jpg',1)"><img src="resursi/Navigaciq/butoni/galeriq.jpg" width="130" height="40" id="Image3" /></a></div>
+         <div id="button"><a href="Promo.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image5','','resursi/navigaciq/butoni/promoroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/promo.jpg" width="130" height="40" id="Image5" /></a>
+         </div>
+         <div id="button"><a href="Poruchai.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image6','','resursi/navigaciq/butoni/porychairoled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/porychai.jpg" width="130" height="40" id="Image6" /></a>
+         </div>
+      </div> 
+    </div>
+   
+   
+   
+  </div>
+  <div class="sidebar1"></div>
+  <div class="content">
+         <div class="sudurjanie">
+            
+            <div id="kartinka"><img src="resursi/tqlo/galeriq/56-05-02-parfum1.jpg" width="250" height="250" onclick="MM_effectGrowShrink(this, 700, '100%', '150%', true, false, true)" /></div>
+            
+             <div id="tekst">Нашият <strong>мотивиран и висококвалифициран екип</strong> от професионалисти ще Ви предостави <strong>компетентно и експертно обслужване</strong>, отговарящо на вашите високи изисквания за качество. Ние винаги сме се стремели да подбираме само най-добрите, най-подготвени и най-перспективни кандидати за дадена позиция, за да покрят високите ни стандарти на качество и успешно да допринесат за устойчивото развитие на фирмата.</div>
+         </div>
+         <div class="sudurjanie">
+            <div id="kartinka1"><img src="resursi/tqlo/galeriq/refan_store.jpg" width="250" height="250" onclick="MM_effectGrowShrink(this, 700, '100%', '150%', true, false, true)" /></div>
+            
+            
+             <div id="tekst1">През 1992 година в град Пловдив отваря врати първият парфюмериен магазин на „Венера Козметикс“ на малката уличка „Георги С. Раковски“, а фирмата е основана като „ЕТ Венера“. Тогава, освен парфюми, магазинчето предлага и селективна козметика, продукти за коса и тяло, както и различни подаръчни продукти за мъже и жени.</div>
+         </div>
+         <div class="sudurjanie">
+           <div id="kartinka">
+            <img src="resursi/tqlo/galeriq/The-Perfume-Shop.jpg" width="250" height="250" onclick="MM_effectGrowShrink(this, 700, '100%', '150%', true, false, true)" />
+            </div>
+            
+             <div id="tekst"><strong>3 години по-късно</strong> отваря врати и <strong>първият склад на фирмата</strong>, като с него стартира фирмената търговия на едро и дистрибуция в по-голямата част на страната. По този начин &ldquo;Венера Козметикс&rdquo; се налага като сериозен дистрибутор на маркова парфюмерия и козметика на българския пазар. През същата година фирмата променя името си на &bdquo;Венера Козметикс&ldquo; ООД, което е запазено и до днес.</div>
+         </div>
+         <div class="sudurjanie">
+            <div id="kartinka1"><img src="resursi/tqlo/galeriq/images.jpg" width="250" height="250" onclick="MM_effectGrowShrink(this, 700, '100%', '150%', true, false, true)" /></div>
+            
+            <div id="tekst1"><strong>През 1998 година</strong> &ldquo;Венера Козметикс&rdquo; мести своята складова база на бул. Марица 130, където работи и до днес. Фирмата става и <strong>официален дистрибутор</strong> на марки като L&rsquo;Oreal, Garnier, Nivea, FA и разширява дистрибуторската си мрежа в страната.</div>
+         </div>
+  </div>
+  <div class="sidebar2"></div>
+  <div class="footer">
+    <div class="goren">
+       <div id="sudurjanie">
+        <div  id="linkove"><a href="index.html">Начало</a></div>
+        <div  id="linkove"><a href="Zanas.html">За нас</a></div>
+        <div  id="linkove"><a href="Galeria.html">Галерия</a></div>
+        <div  id="linkove"><a href="Parfumi.html">Парфюми</a></div>
+       </div>
+       <div id="sudurjanie1">
+        <div  id="linkove"><a href="Promo.html">Промоции</a></div>
+        <div  id="linkove"><a href="Poruchai.html">Поръчай</a></div>
+        <div  id="linkove"><a href="Avtor.html">Автор</a></div>
+        <div  id="linkove"><a href="Kozmetika.html">Козметика</a></div>
+       </div>
+       <div id="sudurjanie2">
+        <div  id="linkove"><a href="Produkt2.html">Продукт2</a></div>
+        <div  id="linkove"><a href="Produkt3.html">Продукт3</a></div>
+        <div  id="linkove"><a href="Produkt4.html">Продукт4</a></div>
+        <div  id="linkove"><a href="Produkt5.html">Продукт5</a></div>
+       </div>
+    </div>
+    <div class="dolen">
+      <div align="center">&copy;Всички права запазени! Изготвил: Даниел Радев</div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+swfobject.registerObject("FlashID");
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+</html>
+
+ 
+           --
+           
+           
+           
+  <-- НАЧАЛО
+  
+  
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Stylecosmetics</title>
+<style type="text/css">
+
+
+
+.container {
+	width: 1264px;
+	background-color: #FFFFFF;
+	
+}
+
+
+.header {
+	background-color: #898989;
+	height:176px;
+}
+.nav{
+	width: 100%;
+	height: 40px;
+	background-color: #1488c0;
+	}
+#button{
+	width: 130px;
+	height: 40px;
+	float: left;
+		}
+.margin {
+	margin-left: 242px;
+	
+	}
+.MenuBarItemSubmenu{
+	height:40px;
+	width:130px;
+	background-color:#128ec2;
+	}
+.MenuBarHorizontal{
+	background-color:#128ec2;
+	height:40px;
+	}
+
+
+.sidebar1 {
+	float: left;
+	width: 234px;
+	height:1500px;
+	background-color:#666;
+}
+.content {
+
+	width: 780px;
+	height:1500px;
+	float: left;
+	background-color:#666;
+}
+.sidebar2 {
+	float: left;
+	width: 242px;
+	height:1500px;
+	background-color: #666;
+}
+
+.footer {
+	background-color: #000;
+	height: 181px;
+	width: 1264px;
+	float: left;
+	background-image: url(resursi/fuuter/fuuter.jpg);
+}
+.goren{
+	padding-top:25px;
+	width:1010px;
+	height:98px;
+	padding-left:242px
+	}
+.dolen{
+	width: 1264px;
+	height: 64px;
+	padding-top: 20px;
+	color: #CCC;
+	}
+#sudurjanie{
+	width:256px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie1{
+	width:263px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie2{
+	width:262px;
+	height:117px;
+	float:left;
+	}
+#linkove{
+	height: 17px;
+	width: 110px;
+	margin-left: 100px;
+	color: #CCC;	
+	}
+
+.obekti{
+width:1010px;
+height:100px;
+padding-left:242px;
+	}
+.animation{
+	width:90px;
+	height:90px;
+	float:left;
+	}
+.companyname{
+	height:90px;
+	float:left;
+	width:345px;
+	margin-left:20px
+	}
+.shkafche{
+	width:345px;
+	height:90px;
+	float:left;
+	margin-left:17px;
+	}
+.lenta{
+	width:1264px;
+	height:30px;
+	background-color:#1488c0;
+	padding-top:6px;
+	}
+#textjoin{
+	height:17px;
+	width:110px;
+	margin-left:242px;
+	margin-top:4px;
+	float:left;
+	}
+#vruzki{
+	float:left;
+	width:25px;
+	height:25px;
+	margin-left:7px;
+	}
+#log{
+	height:17px;
+	width:123px;
+	float:right;
+	margin-right:242px;
+	margin-top:4px;
+	}
+</style>
+<style type="text/css">
+body {
+	background-color: #898989;
+}
+a:link {
+	color: #999999;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #CCCCCC;
+}
+a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+a:active {
+	text-decoration: none;
+}
+.sl{
+	width:780px;
+	float:left;
+}
+.topprod{
+	width:255px;
+	height:255px;
+	background-color:#999;
+	float:left;
+	margin-left:5px;
+	margin-bottom:5px;
+	}
+.nazvanie{
+	width:780px;
+	height:50px;
+	background-color:#1488c0;
+	margin-left:5px;
+	float:left;
+	margin-bottom:5px;
+	}
+</style>
+<link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+</script>
+</head>
+
+<body onload="MM_preloadImages('resursi/Navigaciq/Vhodizhod/join/faceroled.jpg','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg','resursi/Navigaciq/butoni/galeriqroled.jpg')">
+<div class="container">
+  <div class="header">
+ <div class="lenta">
+  <div id="textjoin">Присъедини се:</div>
+  <div id="vruzki"><a href="http://www.facebook.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image8','','resursi/Navigaciq/Vhodizhod/join/faceroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/face.jpg" width="25" height="25" id="Image8" /></a></div>
+   <div id="vruzki"><a href="http://www.vk.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/vk.jpg" width="25" height="25" id="Image9" /></a></div>
+  <div id="vruzki"><a href="http://www.blogger.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/bbb.jpg" width="25" height="25" id="Image10" /></a></div>
+  <div id="vruzki"><a href="http://www.reddit.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/choveche.jpg" width="25" height="25" id="Image11" /></a></div>
+  <div id="vruzki"><a href="http://www.twitter.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/twitter.jpg" width="25" height="25" id="Image12" /></a></div>
+  <div id="log">Вход/Регистрация</div>
+</div>
+  <div class="obekti">
+      <div class="animation">
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="90" height="90" id="FlashID" title="logo">
+          <param name="movie" value="resursi/logorose/ROSE.swf" />
+          <param name="quality" value="high" />
+          <param name="wmode" value="opaque" />
+          <param name="swfversion" value="6.0.65.0" />
+          <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. ->
+          <param name="expressinstall" value="Scripts/expressInstall.swf" />
+          <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+          <!--[if !IE]>--
+          <object type="application/x-shockwave-flash" data="resursi/logorose/ROSE.swf" width="90" height="90">
+            <!--<![endif]--
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- The browser displays the following alternative content for users with Flash Player 6.0 nd older. --
+            <div>
+              <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+              <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+            </div>
+            <!--[if !IE]>->
+          </object>
+          <!--<![endif]->
+        </object>
+      </div>
+      <div class="companyname"><img src="resursi/logorose/style.png" width="345" height="90" /></div>
+      <div class="shkafche">
+      <embed class="ddd" src="file:resursi/shkaf/webshkaf.html" width="360" height="120"></embed>
+      </div>
+  </div> 
+    <div class="nav">
+       <div class="margin">
+          <div id="button"><a href="" onmouseout="MM_swapImgRestore()" 
+               onmouseover="MM_swapImage('Image1','','resursi/navigaciq/butoni/nachaloroled.jpg',1)">
+               <img src="resursi/navigaciq/butoni/nachalo.jpg" width="130" height="40" id="Image1" /></a>
+          </div>
+          <div id="button"><a href="Zanas.html" onmouseout="MM_swapImgRestore()" 
+                onmouseover="MM_swapImage('Image2','','resursi/navigaciq/butoni/za nasroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/za nas.jpg" width="130" height="40" id="Image2" /></a>
+          </div>
+          <div id="button">
+            <ul id="MenuBar1" class="MenuBarHorizontal">
+              <li><a class="MenuBarItemSubmenu" href="#">Каталог</a>
+                <ul>
+                  <li><a href="Parfumi.html">Парфюми</a></li>
+                  <li><a href="Kozmetika.html">Козметика</a></li>
+                </ul>
+              </li>
+</ul>
+          </div>
+         <div id="button"><a href="Galeria.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/butoni/galeriqroled.jpg',1)"><img src="resursi/Navigaciq/butoni/galeriq.jpg" width="130" height="40" id="Image3" /></a></div>
+         <div id="button"><a href="Promo.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image5','','resursi/navigaciq/butoni/promoroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/promo.jpg" width="130" height="40" id="Image5" /></a>
+         </div>
+         <div id="button"><a href="Poruchai.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image6','','resursi/navigaciq/butoni/porychairoled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/porychai.jpg" width="130" height="40" id="Image6" /></a>
+         </div>
+      </div> 
+    </div>
+   
+   
+   
+  </div>
+  <div class="sidebar1"></div>
+  <div class="content">
+        <div class="sl">
+         <embed class="g" src="file:resursi/tqlo/slidenachalo/slider.html" width="788" height="550"></embed>
+        </div>
+    <div class="nazvanie"></div>
+        <div class="topprod">
+          <object id="FlashID2" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="255" height="255">
+            <param name="movie" value="resursi/tqlo/top produkti/1/1.swf" />
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. --
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+            <!--[if !IE]>--
+            <object type="application/x-shockwave-flash" data="resursi/tqlo/top produkti/1/1.swf" width="255" height="255">
+              <!--<![endif]--
+              <param name="quality" value="high" />
+              <param name="wmode" value="opaque" />
+              <param name="swfversion" value="6.0.65.0" />
+              <param name="expressinstall" value="Scripts/expressInstall.swf" />
+              <!-- The browser displays the following alternative content for users with Flash Playe 6.0 and older. --
+              <div>
+                <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+                <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+              </div>
+              <!--[if !IE]>->
+            </object>
+            <!--<![endif]->
+          </object>
+        </div>
+        <div class="topprod">
+          <object id="FlashID3" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="255" height="255">
+            <param name="movie" value="resursi/tqlo/top produkti/2/2.swf" />
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. ->
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+            <!--[if !IE]>--
+            <object type="application/x-shockwave-flash" data="resursi/tqlo/top produkti/2/2.swf" width="255" height="255">
+              <!--<![endif]--
+              <param name="quality" value="high" />
+              <param name="wmode" value="opaque" />
+              <param name="swfversion" value="6.0.65.0" />
+              <param name="expressinstall" value="Scripts/expressInstall.swf" />
+              <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. --
+              <div>
+                <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+                <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+              </div>
+              <!--[if !IE]>--
+            </object>
+            <!--<![endif]--
+          </object>
+        </div>
+        <div class="topprod">
+          <object id="FlashID4" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="255" height="255">
+            <param name="movie" value="resursi/tqlo/top produkti/3/3.swf" />
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. --
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+            <!--[if !IE]>--
+            <object type="application/x-shockwave-flash" data="resursi/tqlo/top produkti/3/3.swf" width="255" height="255">
+              <!--<![endif]->
+              <param name="quality" value="high" />
+              <param name="wmode" value="opaque" />
+              <param name="swfversion" value="6.0.65.0" />
+              <param name="expressinstall" value="Scripts/expressInstall.swf" />
+              <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. ->
+              <div>
+                <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+                <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+              </div>
+              <!--[if !IE]>->
+            </object>
+            <!--<![endif]--
+          </object>
+        </div>
+         <div class="topprod">
+           <object id="FlashID5" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="255" height="255">
+             <param name="movie" value="resursi/tqlo/top produkti/4/4.swf" />
+             <param name="quality" value="high" />
+             <param name="wmode" value="opaque" />
+             <param name="swfversion" value="6.0.65.0" />
+             <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. --
+             <param name="expressinstall" value="Scripts/expressInstall.swf" />
+             <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+             <!--[if !IE]>--
+             <object type="application/x-shockwave-flash" data="resursi/tqlo/top produkti/4/4.swf" width="255" height="255">
+               <!--<![endif]--
+               <param name="quality" value="high" />
+               <param name="wmode" value="opaque" />
+               <param name="swfversion" value="6.0.65.0" />
+               <param name="expressinstall" value="Scripts/expressInstall.swf" />
+               <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. --
+               <div>
+                 <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+                 <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+               </div>
+               <!--[if !IE]>--
+             </object>
+             <!--<![endif]--
+           </object>
+         </div>
+        <div class="topprod">
+          <object id="FlashID6" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="255" height="255">
+            <param name="movie" value="resursi/tqlo/top produkti/5/5.swf" />
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. --
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+            <!--[if !IE]>--
+            <object type="application/x-shockwave-flash" data="resursi/tqlo/top produkti/5/5.swf" width="255" height="255">
+              <!--<![endif]--
+              <param name="quality" value="high" />
+              <param name="wmode" value="opaque" />
+              <param name="swfversion" value="6.0.65.0" />
+              <param name="expressinstall" value="Scripts/expressInstall.swf" />
+              <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. --
+              <div>
+                <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+                <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+              </div>
+              <!--[if !IE]>->
+            </object>
+            <!--<![endif]--
+          </object>
+        </div>
+        <div class="topprod">
+          <object id="FlashID7" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="255" height="255">
+            <param name="movie" value="resursi/tqlo/top produkti/6/6.swf" />
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. --
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+            <!--[if !IE]>--
+            <object type="application/x-shockwave-flash" data="resursi/tqlo/top produkti/6/6.swf" width="255" height="255">
+              <!--<![endif]--
+              <param name="quality" value="high" />
+              <param name="wmode" value="opaque" />
+              <param name="swfversion" value="6.0.65.0" />
+              <param name="expressinstall" value="Scripts/expressInstall.swf" />
+              <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. --
+              <div>
+                <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+                <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+              </div>
+              <!--[if !IE]>--
+            </object>
+            <!--<![endif]--
+          </object>
+        </div>
+         <div class="topprod">
+           <object id="FlashID8" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="255" height="255">
+             <param name="movie" value="resursi/tqlo/top produkti/7/7.swf" />
+             <param name="quality" value="high" />
+             <param name="wmode" value="opaque" />
+             <param name="swfversion" value="6.0.65.0" />
+             <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. --
+             <param name="expressinstall" value="Scripts/expressInstall.swf" />
+             <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+             <!--[if !IE]>--
+             <object type="application/x-shockwave-flash" data="resursi/tqlo/top produkti/7/7.swf" width="255" height="255">
+               <!--<![endif]--
+               <param name="quality" value="high" />
+               <param name="wmode" value="opaque" />
+               <param name="swfversion" value="6.0.65.0" />
+               <param name="expressinstall" value="Scripts/expressInstall.swf" />
+               <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. --
+               <div>
+                 <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+                 <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+               </div>
+               <!--[if !IE]>->
+             </object>
+             <!--<![endif]--
+           </object>
+         </div>
+        <div class="topprod">
+          <object id="FlashID9" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="255" height="255">
+            <param name="movie" value="resursi/tqlo/top produkti/8/8.swf" />
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. --
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+            <!--[if !IE]>--
+            <object type="application/x-shockwave-flash" data="resursi/tqlo/top produkti/8/8.swf" width="255" height="255">
+              <!--<![endif]--
+              <param name="quality" value="high" />
+              <param name="wmode" value="opaque" />
+              <param name="swfversion" value="6.0.65.0" />
+              <param name="expressinstall" value="Scripts/expressInstall.swf" />
+              <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. --
+              <div>
+                <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+                <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+              </div>
+              <!--[if !IE]>--
+            </object>
+            <!--<![endif]->
+          </object>
+        </div>
+        <div class="topprod">
+          <object id="FlashID10" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="255" height="255">
+            <param name="movie" value="resursi/tqlo/top produkti/9/9.swf" />
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. --
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+            <!--[if !IE]>--
+            <object type="application/x-shockwave-flash" data="resursi/tqlo/top produkti/9/9.swf" width="255" height="255">
+              <!--<![endif]--
+              <param name="quality" value="high" />
+              <param name="wmode" value="opaque" />
+              <param name="swfversion" value="6.0.65.0" />
+              <param name="expressinstall" value="Scripts/expressInstall.swf" />
+              <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. --
+              <div>
+                <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+                <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+              </div>
+              
+            </object>
+            
+          </object>
+        </div>
+        
+  </div>
+  <div class="sidebar2"></div>
+  <div class="footer">
+    <div class="goren">
+       <div id="sudurjanie">
+        <div  id="linkove"><a href="index.html">Начало</a></div>
+        <div  id="linkove"><a href="Zanas.html">За нас</a></div>
+        <div  id="linkove"><a href="Galeria.html">Галерия</a></div>
+        <div  id="linkove"><a href="Parfumi.html">Парфюми</a></div>
+       </div>
+       <div id="sudurjanie1">
+        <div  id="linkove"><a href="Promo.html">Промоции</a></div>
+        <div  id="linkove"><a href="Poruchai.html">Поръчай</a></div>
+        <div  id="linkove"><a href="Avtor.html">Автор</a></div>
+        <div  id="linkove"><a href="Kozmetika.html">Козметика</a></div>
+       </div>
+       <div id="sudurjanie2">
+        <div  id="linkove"><a href="Produkt2.html">Продукт2</a></div>
+        <div  id="linkove"><a href="Produkt3.html">Продукт3</a></div>
+        <div  id="linkove"><a href="Produkt4.html">Продукт4</a></div>
+        <div  id="linkove"><a href="Produkt5.html">Продукт5</a></div>
+       </div>
+    </div>
+    <div class="dolen">
+      <div align="center">&copy;Всички права запазени! Изготвил: Даниел Радев</div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+swfobject.registerObject("FlashID");
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+swfobject.registerObject("FlashID2");
+swfobject.registerObject("FlashID3");
+swfobject.registerObject("FlashID4");
+swfobject.registerObject("FlashID5");
+swfobject.registerObject("FlashID6");
+swfobject.registerObject("FlashID7");
+swfobject.registerObject("FlashID8");
+swfobject.registerObject("FlashID9");
+swfobject.registerObject("FlashID10");
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<-- КОЗМЕТИКА
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Козметика</title>
+<style type="text/css">
+
+
+
+.container {
+	width: 1264px;
+	background-color: #FFFFFF;
+	color: #D6E6F3;
+}
+
+
+.header {
+	background-color: #898989;
+	height:176px;
+}
+.nav{
+	width: 100%;
+	height: 40px;
+	background-color: #1488c0;
+	}
+#button{
+	width: 130px;
+	height: 40px;
+	float: left;
+		}
+.margin {
+	margin-left: 242px;
+	
+	}
+.MenuBarItemSubmenu{
+	height:40px;
+	width:130px;
+	background-color:#128ec2;
+	}
+.MenuBarHorizontal{
+	background-color:#128ec2;
+	height:40px;
+	}
+
+
+.sidebar1 {
+	float: left;
+	width: 242px;
+	height:2050px;
+	background-color:#666;
+}
+.content {
+
+	width: 780px;
+	height:2050px;
+	float: left;
+	background-color:#666;
+}
+.sidebar2 {
+	float: left;
+	width: 242px;
+	height:2050px;
+	background-color: #666;
+}
+
+.footer {
+	background-color: #000;
+	height: 181px;
+	width: 1264px;
+	float: left;
+	background-image: url(resursi/fuuter/fuuter.jpg);
+}
+.goren{
+	padding-top:25px;
+	width:1010px;
+	height:98px;
+	padding-left:242px
+	}
+.dolen{
+	width: 1264px;
+	height: 64px;
+	padding-top: 20px;
+	color: #CCC;
+	}
+#sudurjanie{
+	width:256px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie1{
+	width:263px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie2{
+	width:262px;
+	height:117px;
+	float:left;
+	}
+#linkove{
+	height: 17px;
+	width: 110px;
+	margin-left: 100px;
+	color: #CCC;	
+	}
+
+.obekti{
+width:1010px;
+height:100px;
+padding-left:242px;
+	}
+.animation{
+	width:90px;
+	height:90px;
+	float:left;
+	}
+.companyname{
+	height:90px;
+	float:left;
+	width:345px;
+	margin-left:20px
+	}
+.shkafche{
+	width:345px;
+	height:90px;
+	float:left;
+	margin-left:17px;
+	}
+.lenta{
+	width:1264px;
+	height:30px;
+	background-color:#1488c0;
+	padding-top:6px;
+	}
+#textjoin{
+	height:17px;
+	width:110px;
+	margin-left:242px;
+	margin-top:4px;
+	float:left;
+	}
+#vruzki{
+	float:left;
+	width:25px;
+	height:25px;
+	margin-left:7px;
+	}
+#log{
+	height:17px;
+	width:123px;
+	float:right;
+	margin-right:242px;
+	margin-top:4px;
+	}
+</style>
+<style type="text/css">
+body {
+	background-color: #898989;
+}
+a:link {
+	color: #999999;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #CCCCCC;
+}
+a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+a:active {
+	text-decoration: none;
+}
+.sudurjanie{
+	width:780px;
+	height:250px;
+	background-color:#333;
+	margin-top:5px;
+	}
+#izobrajenie{
+	width:250px;
+	height:250px;
+	float:left;
+	background-color:#CCC;
+	}
+#textfiled{
+	width: 510px;
+	height: 135px;
+	float: right;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 60px;
+	color: #CCC;
+	}
+.sudurjanie1{
+	width:780px;
+	height:250px;
+	background-color:#999;
+	margin-top:5px;
+	}
+#izobrajenie1{
+	width:250px;
+	height:250px;
+	float:right;
+	background-color:#CCC;
+	}
+#textfiled1{
+	width: 510px;
+	height: 160px;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 50px;
+	color: #FFF;
+	}
+</style>
+<link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+</script>
+</head>
+
+<body onload="MM_preloadImages('resursi/Navigaciq/Vhodizhod/join/faceroled.jpg','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg','resursi/Navigaciq/butoni/galeriqroled.jpg')">
+<div class="container">
+  <div class="header">
+ <div class="lenta">
+  <div id="textjoin">Присъедини се:</div>
+  <div id="vruzki"><a href="http://www.facebook.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image8','','resursi/Navigaciq/Vhodizhod/join/faceroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/face.jpg" width="25" height="25" id="Image8" /></a></div>
+   <div id="vruzki"><a href="http://www.vk.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/vk.jpg" width="25" height="25" id="Image9" /></a></div>
+  <div id="vruzki"><a href="http://www.blogger.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/bbb.jpg" width="25" height="25" id="Image10" /></a></div>
+  <div id="vruzki"><a href="http://www.reddit.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/choveche.jpg" width="25" height="25" id="Image11" /></a></div>
+  <div id="vruzki"><a href="http://www.twitter.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/twitter.jpg" width="25" height="25" id="Image12" /></a></div>
+  <div id="log">Вход/Регистрация</div>
+</div>
+  <div class="obekti">
+      <div class="animation">
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="90" height="90" id="FlashID" title="logo">
+          <param name="movie" value="resursi/logorose/ROSE.swf" />
+          <param name="quality" value="high" />
+          <param name="wmode" value="opaque" />
+          <param name="swfversion" value="6.0.65.0" />
+          <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. --
+          <param name="expressinstall" value="Scripts/expressInstall.swf" />
+          <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+          <!--[if !IE]>--
+          <object type="application/x-shockwave-flash" data="resursi/logorose/ROSE.swf" width="90" height="90">
+            <!--<![endif]--
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. --
+            <div>
+              <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+              <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+            </div>
+            <!--[if !IE]>--
+          </object>
+          <!--<![endif]--
+        </object>
+      </div>
+      <div class="companyname"><img src="resursi/logorose/style.png" width="345" height="90" /></div>
+      <div class="shkafche">
+      <embed class="ddd" src="file:resursi/shkaf/webshkaf.html" width="360" height="120"></embed>
+      </div>
+  </div> 
+    <div class="nav">
+       <div class="margin">
+          <div id="button"><a href="index.html" onmouseout="MM_swapImgRestore()" 
+               onmouseover="MM_swapImage('Image1','','resursi/navigaciq/butoni/nachaloroled.jpg',1)">
+               <img src="resursi/navigaciq/butoni/nachalo.jpg" width="130" height="40" id="Image1" /></a>
+          </div>
+          <div id="button"><a href="Zanas.html" onmouseout="MM_swapImgRestore()" 
+                onmouseover="MM_swapImage('Image2','','resursi/navigaciq/butoni/za nasroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/za nas.jpg" width="130" height="40" id="Image2" /></a>
+          </div>
+          <div id="button">
+            <ul id="MenuBar1" class="MenuBarHorizontal">
+              <li><a class="MenuBarItemSubmenu" href="#">Каталог</a>
+                <ul>
+                  <li><a href="Parfumi.html">Парфюми</a></li>
+                  <li><a href="Kozmetika.html">Козметика</a></li>
+                </ul>
+              </li>
+</ul>
+          </div>
+         <div id="button"><a href="Galeria.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/butoni/galeriqroled.jpg',1)"><img src="resursi/Navigaciq/butoni/galeriq.jpg" width="130" height="40" id="Image3" /></a></div>
+         <div id="button"><a href="Promo.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image5','','resursi/navigaciq/butoni/promoroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/promo.jpg" width="130" height="40" id="Image5" /></a>
+         </div>
+         <div id="button"><a href="Poruchai.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image6','','resursi/navigaciq/butoni/porychairoled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/porychai.jpg" width="130" height="40" id="Image6" /></a>
+         </div>
+      </div> 
+    </div>
+   
+   
+   
+  </div>
+  <div class="sidebar1"></div>
+  <div class="content">
+    <div class="sudurjanie">
+       <div id="izobrajenie"><img src="resursi/tqlo/kozmetika/1.png" width="250" height="250" /></div>
+       <div id="textfiled">Серията "HypoAllergenic" на козметичната компания "Bell" е специално създадена за дамите с чувствителни очи, дамите с контактни лещи и дамите склонни към алергии. С хипоалергенните сенки, Вие може да озарите очите си и да вкарате цветно настроение в ежедневието си.Кремообразната им формула съдържа пигменти обвити в масло от  жожоба, които я правят лесна за нанасяне и освен това предпазват от раздразнения и предотвратяват сълзенето на очите.</div>
+    </div>
+  <div class="sudurjanie1">
+       <div id="izobrajenie1"><img src="resursi/tqlo/kozmetika/2.png" width="250" height="250" /></div>
+       <div id="textfiled1">Молив-червилото от серията "Max Factor Colour Elixir" ще придаде на устните Ви наситен цвят и перфектно подчертаване!
+Продуктът съчетава едновременно функциите на червило и на молив за устни. Формулата му е изключително мека, което го прави лесен за нанасяне - само с едно плъзгане. Червилото във форма на молив е с изключително силна пигментация. Сред основните активни съставки са витамин E и силиций. Текстурата на червилото позволява лесното му смесване и преливане с различни нюанси.</div>
+    </div>
+     <div class="sudurjanie">
+       <div id="izobrajenie"><img src="resursi/tqlo/kozmetika/3.png" width="250" height="250" /></div>
+       <div id="textfiled">Равномерен тен, без несъвършенства!
+Фон дьо тенът на "Bourjois" осигурява безупречен вид на лицето до 24 часа. Той покрива кожата с нежен воал, който заличава досадните несъвършенства и перфектно уеднаквява тена. Леката му текстура не се усеща от кожата, оставя я да диша и не образува ефект "маска". Той заличава лъщенето на лицето, като деликатно го матира и му придава кадифена мекота и гладкост. </div>
+    </div>
+  <div class="sudurjanie1">
+       <div id="izobrajenie1"><img src="resursi/tqlo/kozmetika/4.png" width="250" height="250" /></div>
+       <div id="textfiled1">Крем "Здраве" е български крем с доказан ефект и гарантиран резултат при кожни раздразнения, използван от поколения българи. Кремът е продукт, който присъства във всеки български дом.
+Качествен козметичен продукт, специално разработен за раздразнена и чувствителна кожа. Успокоява и омекотява. Осигурява противовъзпалително и подсушаващо действие. Подходящ за нанасяне както на лицето, така и на тялото. След кратка употреба възпалената, раздразнена или увредена кожа се възстановява напълно.
+</div>
+    </div>
+     <div class="sudurjanie">
+       <div id="izobrajenie"><img src="resursi/tqlo/kozmetika/5.png" width="250" height="250" /></div>
+       <div id="textfiled">Ефектният блестящ гланц за устни добавя свежа цветна нотка в завършека на външния вид. С него устните са гладки, хидратирани и съблазнителни, без чувство на неприятно лепкане. Гланцът придава огледален блясък на устните и гали с усещане за мекота и комфорт. Силно пигментираната му формула облича устните в цветен бляскав разкош и е идеален за употреба както самостоятелно, така и в комбинация с други продукти. </div>
+    </div>
+  <div class="sudurjanie1">
+       <div id="izobrajenie1"><img src="resursi/tqlo/kozmetika/6.png" width="250" height="250" /></div>
+       <div id="textfiled1">Чудесен финиш на грима и естествен вид. Пудрата за лице на "IsaDora" прави кожата безупречна, съвършено гладка, с равномерен тен и бронзов завършек. 100%-вата ѝ минерална формула поддържа здравия и естествен вид на кожата. Покрива лицето, изравнява тена и придава чувствен загар, без да запушва порите. Леката ѝ текстура не оставя усещане за "тебиширена маска" върху лицето.
+</div>
+    </div>
+     <div class="sudurjanie">
+       <div id="izobrajenie"><img src="resursi/tqlo/kozmetika/7.png" width="250" height="250" /></div>
+       <div id="textfiled">CC коректорът на "Max Factor" в цвят шампанско озарява тена на лицето, за да осигури безупречен външен вид. Той нежно отразява светлината и озарява, като акцентира и извайва контурите на лицето. Коректорът има кремообразна формула, която се слива с тона на кожата и създава перфектната основа за нанасяне на фон дьо тен. </div>
+    </div>
+  <div class="sudurjanie1">
+       <div id="izobrajenie1"><img src="resursi/tqlo/kozmetika/8.png" width="250" height="250" /></div>
+       <div id="textfiled1">Фон дьо тенът "All Day Flawless", от серията "Facefinity" на "Max Factor", съчетава действията на три продукта в едно. Той служи едновременно като основа за фиксиране на грима, коректор за прикриване на несъвършенствата и течен фон дьо тен за продължително покритие. Слънцезащитният фактор SPF 20 осигурява допълнителна защита от външни агресори и предпазва кожата на лицето от фотостареене.</div>
+    </div>
+  </div>
+  <div class="sidebar2"></div>
+  <div class="footer">
+    <div class="goren">
+       <div id="sudurjanie">
+        <div  id="linkove"><a href="index.html">Начало</a></div>
+        <div  id="linkove"><a href="Zanas.html">За нас</a></div>
+        <div  id="linkove"><a href="Galeria.html">Галерия</a></div>
+        <div  id="linkove"><a href="Parfumi.html">Парфюми</a></div>
+       </div>
+       <div id="sudurjanie1">
+        <div  id="linkove"><a href="Promo.html">Промоции</a></div>
+        <div  id="linkove"><a href="Poruchai.html">Поръчай</a></div>
+        <div  id="linkove"><a href="Avtor.html">Автор</a></div>
+        <div  id="linkove"><a href="Kozmetika.html">Козметика</a></div>
+       </div>
+       <div id="sudurjanie2">
+        <div  id="linkove"><a href="Produkt2.html">Продукт2</a></div>
+        <div  id="linkove"><a href="Produkt3.html">Продукт3</a></div>
+        <div  id="linkove"><a href="Produkt4.html">Продукт4</a></div>
+        <div  id="linkove"><a href="Produkt5.html">Продукт5</a></div>
+       </div>
+    </div>
+    <div class="dolen">
+      <div align="center">&copy;Всички права запазени! Изготвил: Даниел Радев</div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+swfobject.registerObject("FlashID");
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+<-- ПАРФЮМИ................................
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Парфюми</title>
+<style type="text/css">
+
+
+
+.container {
+	width: 1264px;
+	background-color: #FFFFFF;
+	
+}
+
+
+.header {
+	background-color: #898989;
+	height:176px;
+}
+.nav{
+	width: 100%;
+	height: 40px;
+	background-color: #1488c0;
+	}
+#button{
+	width: 130px;
+	height: 40px;
+	float: left;
+		}
+.margin {
+	margin-left: 242px;
+	
+	}
+.MenuBarItemSubmenu{
+	height:40px;
+	width:130px;
+	background-color:#128ec2;
+	}
+.MenuBarHorizontal{
+	background-color:#128ec2;
+	height:40px;
+	}
+
+
+.sidebar1 {
+	float: left;
+	width: 242px;
+	height:850px;
+	background-color:#666;
+}
+.content {
+
+	width: 780px;
+	height:850px;
+	float: left;
+	background-color:#666;
+}
+.sidebar2 {
+	float: left;
+	width: 242px;
+	height:850px;
+	background-color: #666;
+}
+
+.footer {
+	background-color: #000;
+	height: 181px;
+	width: 1264px;
+	float: left;
+	background-image: url(resursi/fuuter/fuuter.jpg);
+}
+.goren{
+	padding-top:25px;
+	width:1010px;
+	height:98px;
+	padding-left:242px
+	}
+.dolen{
+	width: 1264px;
+	height: 64px;
+	padding-top: 20px;
+	color: #CCC;
+	}
+#sudurjanie{
+	width:256px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie1{
+	width:263px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie2{
+	width:262px;
+	height:117px;
+	float:left;
+	}
+#linkove{
+	height: 17px;
+	width: 110px;
+	margin-left: 100px;
+	color: #CCC;	
+	}
+
+.obekti{
+width:1010px;
+height:100px;
+padding-left:242px;
+	}
+.animation{
+	width:90px;
+	height:90px;
+	float:left;
+	}
+.companyname{
+	height:90px;
+	float:left;
+	width:345px;
+	margin-left:20px
+	}
+.shkafche{
+	width:345px;
+	height:90px;
+	float:left;
+	margin-left:17px;
+	}
+.lenta{
+	width:1264px;
+	height:30px;
+	background-color:#1488c0;
+	padding-top:6px;
+	}
+#textjoin{
+	height:17px;
+	width:110px;
+	margin-left:242px;
+	margin-top:4px;
+	float:left;
+	}
+#vruzki{
+	float:left;
+	width:25px;
+	height:25px;
+	margin-left:7px;
+	}
+#log{
+	height:17px;
+	width:123px;
+	float:right;
+	margin-right:242px;
+	margin-top:4px;
+	}
+</style>
+<style type="text/css">
+body {
+	background-color: #898989;
+}
+a:link {
+	color: #999999;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #CCCCCC;
+}
+a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+a:active {
+	text-decoration: none;
+}
+.izobrajenie{
+	width:780px;
+	height:250px;
+	background-color:#F90;
+	}
+</style>
+<link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+</script>
+</head>
+
+<body onload="MM_preloadImages('resursi/Navigaciq/Vhodizhod/join/faceroled.jpg','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg','resursi/Navigaciq/butoni/galeriqroled.jpg')">
+<div class="container">
+  <div class="header">
+ <div class="lenta">
+  <div id="textjoin">Присъедини се:</div>
+  <div id="vruzki"><a href="http://www.facebook.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image8','','resursi/Navigaciq/Vhodizhod/join/faceroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/face.jpg" width="25" height="25" id="Image8" /></a></div>
+   <div id="vruzki"><a href="http://www.vk.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/vk.jpg" width="25" height="25" id="Image9" /></a></div>
+  <div id="vruzki"><a href="http://www.blogger.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/bbb.jpg" width="25" height="25" id="Image10" /></a></div>
+  <div id="vruzki"><a href="http://www.reddit.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/choveche.jpg" width="25" height="25" id="Image11" /></a></div>
+  <div id="vruzki"><a href="http://www.twitter.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/twitter.jpg" width="25" height="25" id="Image12" /></a></div>
+  <div id="log">Вход/Регистрация</div>
+</div>
+  <div class="obekti">
+      <div class="animation">
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="90" height="90" id="FlashID" title="logo">
+          <param name="movie" value="resursi/logorose/ROSE.swf" />
+          <param name="quality" value="high" />
+          <param name="wmode" value="opaque" />
+          <param name="swfversion" value="6.0.65.0" />
+          <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. --
+          <param name="expressinstall" value="Scripts/expressInstall.swf" />
+          <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+          <!--[if !IE]>--
+          <object type="application/x-shockwave-flash" data="resursi/logorose/ROSE.swf" width="90" height="90">
+            <!--<![endif]--
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. --
+            <div>
+              <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+              <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+            </div>
+            <!--[if !IE]>--
+          </object>
+          <!--<![endif]--
+        </object>
+      </div>
+      <div class="companyname"><img src="resursi/logorose/style.png" width="345" height="90" /></div>
+      <div class="shkafche">
+      <embed class="ddd" src="file:resursi/shkaf/webshkaf.html" width="360" height="120"></embed>
+      </div>
+  </div> 
+    <div class="nav">
+       <div class="margin">
+          <div id="button"><a href="index.html" onmouseout="MM_swapImgRestore()" 
+               onmouseover="MM_swapImage('Image1','','resursi/navigaciq/butoni/nachaloroled.jpg',1)">
+               <img src="resursi/navigaciq/butoni/nachalo.jpg" width="130" height="40" id="Image1" /></a>
+          </div>
+          <div id="button"><a href="Zanas.html" onmouseout="MM_swapImgRestore()" 
+                onmouseover="MM_swapImage('Image2','','resursi/navigaciq/butoni/za nasroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/za nas.jpg" width="130" height="40" id="Image2" /></a>
+          </div>
+          <div id="button">
+            <ul id="MenuBar1" class="MenuBarHorizontal">
+              <li><a class="MenuBarItemSubmenu" href="#">Каталог</a>
+                <ul>
+                  <li><a href="Parfumi.html">Парфюми</a></li>
+                  <li><a href="Kozmetika.html">Козметика</a></li>
+                </ul>
+              </li>
+</ul>
+          </div>
+         <div id="button"><a href="Galeria.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/butoni/galeriqroled.jpg',1)"><img src="resursi/Navigaciq/butoni/galeriq.jpg" width="130" height="40" id="Image3" /></a></div>
+         <div id="button"><a href="Promo.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image5','','resursi/navigaciq/butoni/promoroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/promo.jpg" width="130" height="40" id="Image5" /></a>
+         </div>
+         <div id="button"><a href="Poruchai.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image6','','resursi/navigaciq/butoni/porychairoled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/porychai.jpg" width="130" height="40" id="Image6" /></a>
+         </div>
+      </div> 
+    </div>
+   
+   
+   
+  </div>
+  <div class="sidebar1"></div>
+  <div class="content">
+  <div class="izobrajenie"><img src="resursi/tqlo/zoomify/baner_test1111.jpg" width="780" height="250" /></div>
+  <embed class="ddd" src="file:resursi/tqlo/zoomify/zoomify.html" width="800" height="600"></embed>
+  </div>
+  <div class="sidebar2"></div>
+  <div class="footer">
+    <div class="goren">
+       <div id="sudurjanie">
+        <div  id="linkove"><a href="index.html">Начало</a></div>
+        <div  id="linkove"><a href="Zanas.html">За нас</a></div>
+        <div  id="linkove"><a href="Galeria.html">Галерия</a></div>
+        <div  id="linkove"><a href="Parfumi.html">Парфюми</a></div>
+       </div>
+       <div id="sudurjanie1">
+        <div  id="linkove"><a href="Promo.html">Промоции</a></div>
+        <div  id="linkove"><a href="Poruchai.html">Поръчай</a></div>
+        <div  id="linkove"><a href="Avtor.html">Автор</a></div>
+        <div  id="linkove"><a href="Kozmetika.html">Козметика</a></div>
+       </div>
+       <div id="sudurjanie2">
+        <div  id="linkove"><a href="Produkt2.html">Продукт2</a></div>
+        <div  id="linkove"><a href="Produkt3.html">Продукт3</a></div>
+        <div  id="linkove"><a href="Produkt4.html">Продукт4</a></div>
+        <div  id="linkove"><a href="Produkt5.html">Продукт5</a></div>
+       </div>
+    </div>
+    <div class="dolen">
+      <div align="center">&copy;Всички права запазени! Изготвил: Даниел Радев</div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+swfobject.registerObject("FlashID");
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+</html>
+
+
+<---ПРОДУКТИ.....................................
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Stylecosmetics</title>
+<style type="text/css">
+
+
+
+.container {
+	width: 1264px;
+	background-color: #FFFFFF;
+	
+}
+
+
+.header {
+	background-color: #898989;
+	height:176px;
+}
+.nav{
+	width: 100%;
+	height: 40px;
+	background-color: #1488c0;
+	}
+#button{
+	width: 130px;
+	height: 40px;
+	float: left;
+		}
+.margin {
+	margin-left: 242px;
+	
+	}
+.MenuBarItemSubmenu{
+	height:40px;
+	width:130px;
+	background-color:#128ec2;
+	}
+.MenuBarHorizontal{
+	background-color:#128ec2;
+	height:40px;
+	}
+
+
+
+.content {
+
+	width: 100%;
+	height:1000px;
+	float: left;
+	background-color:#666;
+}
+
+
+.footer {
+	background-color: #000;
+	height: 181px;
+	width: 1264px;
+	float: left;
+	background-image: url(resursi/fuuter/fuuter.jpg);
+}
+.goren{
+	padding-top:25px;
+	width:1010px;
+	height:98px;
+	padding-left:242px
+	}
+.dolen{
+	width: 1264px;
+	height: 64px;
+	padding-top: 20px;
+	color: #CCC;
+	}
+#sudurjanie{
+	width:256px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie1{
+	width:263px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie2{
+	width:262px;
+	height:117px;
+	float:left;
+	}
+#linkove{
+	height: 17px;
+	width: 110px;
+	margin-left: 100px;
+	color: #CCC;	
+	}
+
+.obekti{
+width:1010px;
+height:100px;
+padding-left:242px;
+	}
+.animation{
+	width:90px;
+	height:90px;
+	float:left;
+	}
+.companyname{
+	height:90px;
+	float:left;
+	width:345px;
+	margin-left:20px
+	}
+.shkafche{
+	width:345px;
+	height:90px;
+	float:left;
+	margin-left:17px;
+	}
+.lenta{
+	width:1264px;
+	height:30px;
+	background-color:#1488c0;
+	padding-top:6px;
+	}
+#textjoin{
+	height:17px;
+	width:110px;
+	margin-left:242px;
+	margin-top:4px;
+	float:left;
+	}
+#vruzki{
+	float:left;
+	width:25px;
+	height:25px;
+	margin-left:7px;
+	}
+#log{
+	height:17px;
+	width:123px;
+	float:right;
+	margin-right:242px;
+	margin-top:4px;
+	}
+</style>
+<style type="text/css">
+body {
+	background-color: #898989;
+}
+a:link {
+	color: #999999;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #CCCCCC;
+}
+a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+a:active {
+	text-decoration: none;
+}
+.acontent {
+	margin-left:160px;
+	width:1050px;
+	height:620px;
+	}
+.zoomify{
+	width: 605px;
+	height: 620px;
+	float:left;
+	}
+.zcontent{
+margin-top:150px;
+margin-right:30px;
+width:400px;
+height:600px;
+float:right;	
+	}
+#abutton{
+	margin-top:50px;
+	width: 150px;
+	height: 50px;
+	float: right;
+	cursor:pointer;
+	border-radius:30%;
+	}
+#text
+{
+	width: 400px;
+	color: #FFF;
+	float: right;
+	font-size: 18px;
+	text-align: justify;
+	}
+#poruchka{
+	width:150px;
+	height:50px;
+	background-color: #510036;
+		cursor:pointer;
+	border-radius:30%;
+	}
+</style>
+<link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+</script>
+</head>
+
+<body onload="MM_preloadImages('resursi/Navigaciq/Vhodizhod/join/faceroled.jpg','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg','resursi/Navigaciq/butoni/galeriqroled.jpg')">
+<div class="container">
+  <div class="header">
+ <div class="lenta">
+  <div id="textjoin">Присъедини се:</div>
+  <div id="vruzki"><a href="http://www.facebook.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image8','','resursi/Navigaciq/Vhodizhod/join/faceroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/face.jpg" width="25" height="25" id="Image8" /></a></div>
+   <div id="vruzki"><a href="http://www.vk.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/vk.jpg" width="25" height="25" id="Image9" /></a></div>
+  <div id="vruzki"><a href="http://www.blogger.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/bbb.jpg" width="25" height="25" id="Image10" /></a></div>
+  <div id="vruzki"><a href="http://www.reddit.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/choveche.jpg" width="25" height="25" id="Image11" /></a></div>
+  <div id="vruzki"><a href="http://www.twitter.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/twitter.jpg" width="25" height="25" id="Image12" /></a></div>
+  <div id="log">Вход/Регистрация</div>
+</div>
+  <div class="obekti">
+      <div class="animation">
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="90" height="90" id="FlashID" title="logo">
+          <param name="movie" value="resursi/logorose/ROSE.swf" />
+          <param name="quality" value="high" />
+          <param name="wmode" value="opaque" />
+          <param name="swfversion" value="6.0.65.0" />
+          <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest versio of Flash Player. Delete it if you don’t want users to see the prompt. --
+          <param name="expressinstall" value="Scripts/expressInstall.swf" />
+          <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+          <!--[if !IE]>--
+          <object type="application/x-shockwave-flash" data="resursi/logorose/ROSE.swf" width="90" height="90">
+            <!--<![endif]--
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. --
+            <div>
+              <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+              <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+            </div>
+            <!--[if !IE]>--
+          </object>
+          <!--<![endif]--
+        </object>
+      </div>
+      <div class="companyname"><img src="resursi/logorose/style.png" width="345" height="90" /></div>
+      <div class="shkafche">
+      <embed class="ddd" src="file:resursi/shkaf/webshkaf.html" width="360" height="120"></embed>
+      </div>
+  </div> 
+    <div class="nav">
+       <div class="margin">
+          <div id="button"><a href="index.html" onmouseout="MM_swapImgRestore()" 
+               onmouseover="MM_swapImage('Image1','','resursi/navigaciq/butoni/nachaloroled.jpg',1)">
+               <img src="resursi/navigaciq/butoni/nachalo.jpg" width="130" height="40" id="Image1" /></a>
+          </div>
+          <div id="button"><a href="Zanas.html" onmouseout="MM_swapImgRestore()" 
+                onmouseover="MM_swapImage('Image2','','resursi/navigaciq/butoni/za nasroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/za nas.jpg" width="130" height="40" id="Image2" /></a>
+          </div>
+          <div id="button">
+            <ul id="MenuBar1" class="MenuBarHorizontal">
+              <li><a class="MenuBarItemSubmenu" href="#">Каталог</a>
+                <ul>
+                  <li><a href="Parfumi.html">Парфюми</a></li>
+                  <li><a href="Kozmetika.html">Козметика</a></li>
+                </ul>
+              </li>
+</ul>
+          </div>
+         <div id="button"><a href="Galeria.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/butoni/galeriqroled.jpg',1)"><img src="resursi/Navigaciq/butoni/galeriq.jpg" width="130" height="40" id="Image3" /></a></div>
+         <div id="button"><a href="Promo.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image5','','resursi/navigaciq/butoni/promoroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/promo.jpg" width="130" height="40" id="Image5" /></a>
+         </div>
+         <div id="button"><a href="Poruchai.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image6','','resursi/navigaciq/butoni/porychairoled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/porychai.jpg" width="130" height="40" id="Image6" /></a>
+         </div>
+      </div> 
+    </div>
+   
+   
+   
+  </div>
+  
+  <div class="content">
+  <div class="acontent">
+   <div class="zoomify" align="left">
+     <embed src="amouage_epic_perfume_luxury_43066_3840x2400.html" width="612" height="620"></embed>
+   </div>
+  <div class="zcontent" >
+     <div id="text">Парфюми Amouage - кралска вълна от екзотика.Amouage е независима луксозна марка парфюми,която днес е установена в Лондон, но нейните корени са от Близкия изток.Марката черпи вдъхновение от богатото и разнообразно наследство на родното си място-Султаната на Оман, и по този начин предлага аромати характеризиращи се с изключително вдъхновяващи възможности. пълен текст</div>
+    <div id="abutton"><form id="form1" name="form1" method="post" action="">
+      <input type="submit" name="Поръчай" id="poruchka" value="Поръчай" />
+    </form></div>
+    
+  </div>
+  
+  </div>
+  <div class="footer">
+    <div class="goren">
+       <div id="sudurjanie">
+        <div  id="linkove"><a href="index.html">Начало</a></div>
+        <div  id="linkove"><a href="Zanas.html">За нас</a></div>
+        <div  id="linkove"><a href="Galeria.html">Галерия</a></div>
+        <div  id="linkove"><a href="Parfumi.html">Парфюми</a></div>
+       </div>
+       <div id="sudurjanie1">
+        <div  id="linkove"><a href="Promo.html">Промоции</a></div>
+        <div  id="linkove"><a href="Poruchai.html">Поръчай</a></div>
+        <div  id="linkove"><a href="Avtor.html">Автор</a></div>
+        <div  id="linkove"><a href="Kozmetika.html">Козметика</a></div>
+       </div>
+       <div id="sudurjanie2">
+        <div  id="linkove"><a href="Produkt2.html">Продукт2</a></div>
+        <div  id="linkove"><a href="Produkt3.html">Продукт3</a></div>
+        <div  id="linkove"><a href="Produkt4.html">Продукт4</a></div>
+        <div  id="linkove"><a href="Produkt5.html">Продукт5</a></div>
+       </div>
+    </div>
+    <div class="dolen">
+      <div align="center">&copy;Всички права запазени! Изготвил: Даниел Радев</div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+swfobject.registerObject("FlashID");
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<--- ПРОМООО.............
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Промоции</title>
+<style type="text/css">
+
+
+
+.container {
+	width: 1264px;
+	background-color: #FFFFFF;
+	
+}
+
+
+.header {
+	background-color: #898989;
+	height:176px;
+}
+.nav{
+	width: 100%;
+	height: 40px;
+	background-color: #1488c0;
+	}
+#button{
+	width: 130px;
+	height: 40px;
+	float: left;
+		}
+.margin {
+	margin-left: 242px;
+	
+	}
+.MenuBarItemSubmenu{
+	height:40px;
+	width:130px;
+	background-color:#128ec2;
+	}
+.MenuBarHorizontal{
+	background-color:#128ec2;
+	height:40px;
+	}
+
+
+.sidebar1 {
+	float: left;
+	width: 242px;
+	height:1600px;
+	background-color:#666;
+}
+.content {
+
+	width: 780px;
+	height:1600px;
+	float: left;
+	background-color:#666;
+}
+.sidebar2 {
+	float: left;
+	width: 242px;
+	height:1600px;
+	background-color: #666;
+}
+
+.footer {
+	background-color: #000;
+	height: 181px;
+	width: 1264px;
+	float: left;
+	background-image: url(resursi/fuuter/fuuter.jpg);
+}
+.goren{
+	padding-top:25px;
+	width:1010px;
+	height:98px;
+	padding-left:242px
+	}
+.dolen{
+	width: 1264px;
+	height: 64px;
+	padding-top: 20px;
+	color: #CCC;
+	}
+#sudurjanie{
+	width:256px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie1{
+	width:263px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie2{
+	width:262px;
+	height:117px;
+	float:left;
+	}
+#linkove{
+	height: 17px;
+	width: 110px;
+	margin-left: 100px;
+	color: #CCC;	
+	}
+
+.obekti{
+width:1010px;
+height:100px;
+padding-left:242px;
+	}
+.animation{
+	width:90px;
+	height:90px;
+	float:left;
+	}
+.companyname{
+	height:90px;
+	float:left;
+	width:345px;
+	margin-left:20px
+	}
+.shkafche{
+	width:345px;
+	height:90px;
+	float:left;
+	margin-left:17px;
+	}
+.lenta{
+	width:1264px;
+	height:30px;
+	background-color:#1488c0;
+	padding-top:6px;
+	}
+#textjoin{
+	height:17px;
+	width:110px;
+	margin-left:242px;
+	margin-top:4px;
+	float:left;
+	}
+#vruzki{
+	float:left;
+	width:25px;
+	height:25px;
+	margin-left:7px;
+	}
+#log{
+	height:17px;
+	width:123px;
+	float:right;
+	margin-right:242px;
+	margin-top:4px;
+	}
+</style>
+<style type="text/css">
+body {
+	background-color: #898989;
+}
+a:link {
+	color: #999999;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #CCCCCC;
+}
+a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+a:active {
+	text-decoration: none;
+}
+</style>
+<link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+</script>
+</head>
+
+<body onload="MM_preloadImages('resursi/Navigaciq/Vhodizhod/join/faceroled.jpg','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg','resursi/Navigaciq/butoni/galeriqroled.jpg')">
+<div class="container">
+  <div class="header">
+ <div class="lenta">
+  <div id="textjoin">Присъедини се:</div>
+  <div id="vruzki"><a href="http://www.facebook.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image8','','resursi/Navigaciq/Vhodizhod/join/faceroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/face.jpg" width="25" height="25" id="Image8" /></a></div>
+   <div id="vruzki"><a href="http://www.vk.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/vk.jpg" width="25" height="25" id="Image9" /></a></div>
+  <div id="vruzki"><a href="http://www.blogger.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/bbb.jpg" width="25" height="25" id="Image10" /></a></div>
+  <div id="vruzki"><a href="http://www.reddit.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/choveche.jpg" width="25" height="25" id="Image11" /></a></div>
+  <div id="vruzki"><a href="http://www.twitter.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/twitter.jpg" width="25" height="25" id="Image12" /></a></div>
+  <div id="log">Вход/Регистрация</div>
+</div>
+  <div class="obekti">
+      <div class="animation">
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="90" height="90" id="FlashID" title="logo">
+          <param name="movie" value="resursi/logorose/ROSE.swf" />
+          <param name="quality" value="high" />
+          <param name="wmode" value="opaque" />
+          <param name="swfversion" value="6.0.65.0" />
+          <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. --
+          <param name="expressinstall" value="Scripts/expressInstall.swf" />
+          <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+          <!--[if !IE]>--
+          <object type="application/x-shockwave-flash" data="resursi/logorose/ROSE.swf" width="90" height="90">
+            <!--<![endif]--
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. --
+            <div>
+              <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+              <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+            </div>
+            <!--[if !IE]>--
+          </object>
+          <!--<![endif]--
+        </object>
+      </div>
+      <div class="companyname"><img src="resursi/logorose/style.png" width="345" height="90" /></div>
+      <div class="shkafche">
+      <embed class="ddd" src="file:resursi/shkaf/webshkaf.html" width="360" height="120"></embed>
+      </div>
+  </div> 
+    <div class="nav">
+       <div class="margin">
+          <div id="button"><a href="index.html" onmouseout="MM_swapImgRestore()" 
+               onmouseover="MM_swapImage('Image1','','resursi/navigaciq/butoni/nachaloroled.jpg',1)">
+               <img src="resursi/navigaciq/butoni/nachalo.jpg" width="130" height="40" id="Image1" /></a>
+          </div>
+          <div id="button"><a href="Zanas.html" onmouseout="MM_swapImgRestore()" 
+                onmouseover="MM_swapImage('Image2','','resursi/navigaciq/butoni/za nasroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/za nas.jpg" width="130" height="40" id="Image2" /></a>
+          </div>
+          <div id="button">
+            <ul id="MenuBar1" class="MenuBarHorizontal">
+              <li><a class="MenuBarItemSubmenu" href="#">Каталог</a>
+                <ul>
+                  <li><a href="Parfumi.html">Парфюми</a></li>
+                  <li><a href="Kozmetika.html">Козметика</a></li>
+                </ul>
+              </li>
+</ul>
+          </div>
+         <div id="button"><a href="Galeria.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/butoni/galeriqroled.jpg',1)"><img src="resursi/Navigaciq/butoni/galeriq.jpg" width="130" height="40" id="Image3" /></a></div>
+         <div id="button"><a href="Promo.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image5','','resursi/navigaciq/butoni/promoroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/promo.jpg" width="130" height="40" id="Image5" /></a>
+         </div>
+         <div id="button"><a href="Poruchai.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image6','','resursi/navigaciq/butoni/porychairoled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/porychai.jpg" width="130" height="40" id="Image6" /></a>
+         </div>
+      </div> 
+    </div>
+   
+   
+   
+  </div>
+  <div class="sidebar1"></div>
+  <div class="content">
+    <div class="promo">
+    <embed class="sdsd" src="resursi/tqlo/promo/zad 6.html" width="2000" height="1500" >
+    </embed>
+    </div>
+  </div>
+  <div class="sidebar2"></div>
+  <div class="footer">
+    <div class="goren">
+       <div id="sudurjanie">
+        <div  id="linkove"><a href="index.html">Начало</a></div>
+        <div  id="linkove"><a href="Zanas.html">За нас</a></div>
+        <div  id="linkove"><a href="Galeria.html">Галерия</a></div>
+        <div  id="linkove"><a href="Parfumi.html">Парфюми</a></div>
+       </div>
+       <div id="sudurjanie1">
+        <div  id="linkove"><a href="Promo.html">Промоции</a></div>
+        <div  id="linkove"><a href="Poruchai.html">Поръчай</a></div>
+        <div  id="linkove"><a href="Avtor.html">Автор</a></div>
+        <div  id="linkove"><a href="Kozmetika.html">Козметика</a></div>
+       </div>
+       <div id="sudurjanie2">
+        <div  id="linkove"><a href="Produkt2.html">Продукт2</a></div>
+        <div  id="linkove"><a href="Produkt3.html">Продукт3</a></div>
+        <div  id="linkove"><a href="Produkt4.html">Продукт4</a></div>
+        <div  id="linkove"><a href="Produkt5.html">Продукт5</a></div>
+       </div>
+    </div>
+    <div class="dolen">
+      <div align="center">&copy;Всички права запазени! Изготвил: Даниел Радев</div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+swfobject.registerObject("FlashID");
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+</html>
+
+
+
+
+
+<----- ЗАНАС...........................................................
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>За нас</title>
+<style type="text/css">
+
+
+
+.container {
+	width: 1264px;
+	background-color: #FFFFFF;
+	
+}
+
+
+.header {
+	background-color: #898989;
+	height:176px;
+}
+.nav{
+	width: 100%;
+	height: 40px;
+	background-color: #1488c0;
+	}
+#button{
+	width: 130px;
+	height: 40px;
+	float: left;
+		}
+.margin {
+	margin-left: 242px;
+	
+	}
+.MenuBarItemSubmenu{
+	height:40px;
+	width:130px;
+	background-color:#128ec2;
+	}
+.MenuBarHorizontal{
+	background-color:#128ec2;
+	height:40px;
+	}
+
+
+.sidebar1 {
+	float: left;
+	width: 242px;
+	height:1000px;
+	background-color:#666;
+}
+.content {
+
+	width: 780px;
+	height:1000px;
+	float: left;
+	background-color:#666;
+}
+.sidebar2 {
+	float: left;
+	width: 242px;
+	height:1000px;
+	background-color: #666;
+}
+
+.footer {
+	background-color: #000;
+	height: 181px;
+	width: 1264px;
+	float: left;
+	background-image: url(resursi/fuuter/fuuter.jpg);
+}
+.goren{
+	padding-top:25px;
+	width:1010px;
+	height:98px;
+	padding-left:242px
+	}
+.dolen{
+	width: 1264px;
+	height: 64px;
+	padding-top: 20px;
+	color: #CCC;
+	}
+#sudurjanie{
+	width:256px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie1{
+	width:263px;
+	height:117px;
+	float:left;
+	}
+#sudurjanie2{
+	width:262px;
+	height:117px;
+	float:left;
+	}
+#linkove{
+	height: 17px;
+	width: 110px;
+	margin-left: 100px;
+	color: #CCC;	
+	}
+
+.obekti{
+width:1010px;
+height:100px;
+padding-left:242px;
+	}
+.animation{
+	width:90px;
+	height:90px;
+	float:left;
+	}
+.companyname{
+	height:90px;
+	float:left;
+	width:345px;
+	margin-left:20px
+	}
+.shkafche{
+	width:345px;
+	height:90px;
+	float:left;
+	margin-left:17px;
+	}
+.lenta{
+	width:1264px;
+	height:30px;
+	background-color:#1488c0;
+	padding-top:6px;
+	}
+#textjoin{
+	height:17px;
+	width:110px;
+	margin-left:242px;
+	margin-top:4px;
+	float:left;
+	}
+#vruzki{
+	float:left;
+	width:25px;
+	height:25px;
+	margin-left:7px;
+	}
+#log{
+	height:17px;
+	width:123px;
+	float:right;
+	margin-right:242px;
+	margin-top:4px;
+	}
+</style>
+<style type="text/css">
+body {
+	background-color: #898989;
+}
+a:link {
+	color: #999999;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #CCCCCC;
+}
+a:hover {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+a:active {
+	text-decoration: none;
+}
+</style>
+<link href="SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<script src="Scripts/swfobject_modified.js" type="text/javascript"></script>
+<script src="SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<script type="text/javascript">
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+</script>
+</head>
+
+<body onload="MM_preloadImages('resursi/Navigaciq/Vhodizhod/join/faceroled.jpg','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg','resursi/Navigaciq/butoni/galeriqroled.jpg')">
+<div class="container">
+  <div class="header">
+ <div class="lenta">
+  <div id="textjoin">Присъедини се:</div>
+  <div id="vruzki"><a href="http://www.facebook.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image8','','resursi/Navigaciq/Vhodizhod/join/faceroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/face.jpg" width="25" height="25" id="Image8" /></a></div>
+   <div id="vruzki"><a href="http://www.vk.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image9','','resursi/Navigaciq/Vhodizhod/join/vkroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/vk.jpg" width="25" height="25" id="Image9" /></a></div>
+  <div id="vruzki"><a href="http://www.blogger.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image10','','resursi/Navigaciq/Vhodizhod/join/bbbroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/bbb.jpg" width="25" height="25" id="Image10" /></a></div>
+  <div id="vruzki"><a href="http://www.reddit.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image11','','resursi/Navigaciq/Vhodizhod/join/chovecheroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/choveche.jpg" width="25" height="25" id="Image11" /></a></div>
+  <div id="vruzki"><a href="http://www.twitter.com/" target="new" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/Vhodizhod/join/twitterroled.jpg',1)"><img src="resursi/Navigaciq/Vhodizhod/join/twitter.jpg" width="25" height="25" id="Image12" /></a></div>
+  <div id="log">Вход/Регистрация</div>
+</div>
+  <div class="obekti">
+      <div class="animation">
+        <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="90" height="90" id="FlashID" title="logo">
+          <param name="movie" value="resursi/logorose/ROSE.swf" />
+          <param name="quality" value="high" />
+          <param name="wmode" value="opaque" />
+          <param name="swfversion" value="6.0.65.0" />
+          <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. --
+          <param name="expressinstall" value="Scripts/expressInstall.swf" />
+          <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+          <!--[if !IE]>--
+          <object type="application/x-shockwave-flash" data="resursi/logorose/ROSE.swf" width="90" height="90">
+            <!--<![endif]--
+            <param name="quality" value="high" />
+            <param name="wmode" value="opaque" />
+            <param name="swfversion" value="6.0.65.0" />
+            <param name="expressinstall" value="Scripts/expressInstall.swf" />
+            <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. --
+            <div>
+              <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+              <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+            </div>
+            <!--[if !IE]>--
+          </object>
+          <!--<![endif]--
+        </object>
+      </div>
+      <div class="companyname"><img src="resursi/logorose/style.png" width="345" height="90" /></div>
+      <div class="shkafche">
+      <embed class="ddd" src="file:resursi/shkaf/webshkaf.html" width="360" height="120"></embed>
+      </div>
+  </div> 
+    <div class="nav">
+       <div class="margin">
+          <div id="button"><a href="index.html" onmouseout="MM_swapImgRestore()" 
+               onmouseover="MM_swapImage('Image1','','resursi/navigaciq/butoni/nachaloroled.jpg',1)">
+               <img src="resursi/navigaciq/butoni/nachalo.jpg" width="130" height="40" id="Image1" /></a>
+          </div>
+          <div id="button"><a href="Zanas.html" onmouseout="MM_swapImgRestore()" 
+                onmouseover="MM_swapImage('Image2','','resursi/navigaciq/butoni/za nasroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/za nas.jpg" width="130" height="40" id="Image2" /></a>
+          </div>
+          <div id="button">
+            <ul id="MenuBar1" class="MenuBarHorizontal">
+              <li><a class="MenuBarItemSubmenu" href="#">Каталог</a>
+                <ul>
+                  <li><a href="Parfumi.html">Парфюми</a></li>
+                  <li><a href="Kozmetika.html">Козметика</a></li>
+                </ul>
+              </li>
+</ul>
+          </div>
+         <div id="button"><a href="Galeria.html" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image12','','resursi/Navigaciq/butoni/galeriqroled.jpg',1)"><img src="resursi/Navigaciq/butoni/galeriq.jpg" width="130" height="40" id="Image3" /></a></div>
+         <div id="button"><a href="Promo.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image5','','resursi/navigaciq/butoni/promoroled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/promo.jpg" width="130" height="40" id="Image5" /></a>
+         </div>
+         <div id="button"><a href="Poruchai.html" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image6','','resursi/navigaciq/butoni/porychairoled.jpg',1)">
+                <img src="resursi/navigaciq/butoni/porychai.jpg" width="130" height="40" id="Image6" /></a>
+         </div>
+      </div> 
+    </div>
+   
+   
+   
+  </div>
+  <div class="sidebar1"></div>
+  <div class="content"><img src="resursi/tqlo/занас.jpg" width="780" height="1000" /></div>
+  
+  <div class="sidebar2"></div>
+  <div class="footer">
+    <div class="goren">
+       <div id="sudurjanie">
+        <div  id="linkove"><a href="index.html">Начало</a></div>
+        <div  id="linkove"><a href="Zanas.html">За нас</a></div>
+        <div  id="linkove"><a href="Galeria.html">Галерия</a></div>
+        <div  id="linkove"><a href="Parfumi.html">Парфюми</a></div>
+       </div>
+       <div id="sudurjanie1">
+        <div  id="linkove"><a href="Promo.html">Промоции</a></div>
+        <div  id="linkove"><a href="Poruchai.html">Поръчай</a></div>
+        <div  id="linkove"><a href="Avtor.html">Автор</a></div>
+        <div  id="linkove"><a href="Kozmetika.html">Козметика</a></div>
+       </div>
+       <div id="sudurjanie2">
+        <div  id="linkove"><a href="Produkt2.html">Продукт2</a></div>
+        <div  id="linkove"><a href="Produkt3.html">Продукт3</a></div>
+        <div  id="linkove"><a href="Produkt4.html">Продукт4</a></div>
+        <div  id="linkove"><a href="Produkt5.html">Продукт5</a></div>
+       </div>
+    </div>
+    <div class="dolen">
+      <div align="center">&copy;Всички права запазени! Изготвил: Даниел Радев</div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+swfobject.registerObject("FlashID");
+var MenuBar1 = new Spry.Widget.MenuBar("MenuBar1", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+</html>
